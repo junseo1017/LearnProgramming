@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말있기</title>
+</head>
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text">
+    <button>입력</button>
+    <script>
+        const number = parseInt(prompt('몇 명이 참가하나요?'),10); 
+        // 프롬프트란 함수를 사용하여 사용자가 직접 참가인원을 입력. 이 떄 프롬프트에 입력하는 것은 '문자열'이기 때문에 parseInt로 자료형을 숫자로 바꿔줌. 
+        // 그리고 상수 선언을 통해 입력한 숫자가 저장될 수 있게 함.
+
+        alert (number);
+        // 경고 메세지를 통해 입력한 값을 확인시켜줌.
+        // console.log('number',number); 값을 확인할 때는 가급적 콘솔로그로 확인하는게 좋음
+
+        const yesOrNo = confirm('맞나요?');
+        // confirm 함수를 통해 확인 alert를 내보내고
+        // 변수 선언을 통해 그 값을 저장
+    
+        const onClickButton = () => { // 어떤 동작이 실행되고 난 뒤에 이어서 실행되는 함수를 콜백 함수라고 부름 
+            console.log('버튼 클릭');
+        }
+        const $button = document.querySelector('button'); // 쿼리셀렉터를 통해 태그를 지정. 지정한 태그인 input의 값을 변수로 선언한다. querySelectorAll은 모든 태그를 지정할 수 있고, 이때 유사객체 형태로 저장된다. 
+        $button.addEventListener('click',onClickButton); // 앞의 onClickButton 함수는 어떤 동작(앞의 경우 'click'이 실행되고 난 뒤에 이어서 실행된 함수로서 콜백 함수라고도 불리고, 리스너함수라고도 불림
+
+        const onInput = (event) => { // input은 매개변수로 event가 존재한다. event.target.value를 통해 이벤트와 관련된 정보를 얻을 수 있음
+            console.log('글자 입력', event.target.value);
+        }
+        const $input = document.querySelector('input');
+        $input.addEventListener('input', onInput);
+        
+        
+        
+        document.querySelector('#order');
+        // id는 태그에 한번만 사용 가능 span#order로 표시해도 상관없음.
+        // class의 경우 .class명으로 입력 가능 ex) document.querySelectorAll('button.btn');
+        // querySelector('div span')의 경우 div의 자식 태그인 span을 지정할 수 있음 div>span도 활용 가능
+
+
+    </script>
+</body>
+</html>

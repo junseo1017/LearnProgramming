@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- 하나의 태그에 중첩해서 css가 적용됐을 때 우선 순위가 다르다. -->
+    <!--style attribute(스타일 속성) > id selector > class selector > tag selector 순으로 우선적용됨-->
+    <!--덜 명시적인 것부터 적용 -->
+    <!-- !important를 통해 우선순위를 강제적으로 적요할 수 있으나 권장되는 문법은 아님-->
+    <style>
+      li {
+        color: red !important;
+      }
+      #idsel {
+        color: blue;
+      }
+      .classsel {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>html</li>
+      <li id="idsel" class="classsel" style="color: powderblue">css</li>
+      <li>javascript</li>
+    </ul>
+  </body>
+</html>

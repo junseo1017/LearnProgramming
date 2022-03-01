@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            padding-top: 100px;
+            background: beige;
+            height: 100vh;
+            display: flex;
+        }
+        .item{
+            width: 40px;
+            height: 40px;
+            border: 1px solid black;
+        }
+        .item1{
+            background: red;
+            flex-grow:1;  /* 브라우저가 커질 때 라 컨테이너의 크기에 맞게 크기를 키움 */
+            flex-shrink: 1; /* 브라우저가 작아질 때 컨테이너의 크기에 맞게 크기를 줄임 */
+            flex-basis:auto; /* 그로우나 쉬링크를 설정하지 않고 퍼센테이지로 조율할 수 있음, 기본값으로 auto를 씀 */
+            align-self: center; /* 아이템 별로 아이템을 정렬할 수 있음 */
+        }
+        .item2{
+            background: yellow;
+            flex-grow: 1;
+        }
+        .item3{
+            background: blue;
+            flex-grow:1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+</body>
+</html>

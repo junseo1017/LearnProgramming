@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--무언가를 grouping 하는 목적-->
+    <!--HTML P 요소, 문장을 나타낼 때 사용Paragraph-->
+    <h1>html grouping content</h1>
+    <h2>html p 요소</h2>
+    <p>Hello World</p>
+
+    <!--HTML Blockquote 요소-->
+    <!-- block quotation 어떤 인용구를 가져올 때 블록 단위로 가져온다는 의미-->
+    <blockquote>
+      <p>html 블라블라</p>
+      <cite>www.naver.com</cite>
+    </blockquote>
+
+    <!--ol,ul,menu,li 요소-->
+    <!--ol : ordered list 순서있는 목록-->
+    <!--ul : unordered list 순서없는 목록-->
+    <!--li : list item ol,ul 요소의 자식 요소 무조건 포함시켜야함-->
+    <h1>html 강의 커리큘럼</h1>
+    <ol>
+      <li>html1</li>
+      <li>html2</li>
+    </ol>
+    <h1>html 요소</h1>
+    <ul>
+      <li>html</li>
+      <li>body</li>
+    </ul>
+
+    <!--menu 요소-->
+    <!--firefox에서만 지원하고 있음-->
+    <!--버튼 여러개를 가지고 있는 목록-->
+    <!-- nav 요소와 헷갈리지 않기-->
+    <menu>
+      <li><button type="button">굵게하기</button></li>
+      <li><button type="button">취소선</button></li>
+    </menu>
+
+    <!--dl, dt, dd 요소-->
+    <!--dl : definition list 정의 목록-->
+    <!--dt : 정의 대상, dd : 정의 설명-->
+    <!--dt와dd는 한쌍으로 구성해야 함 단독으로 사용할 수 없음-->
+    <!--dt 아래 여러개의 dd를 사용할 수 있음.-->
+    <!--dl 요소 내에세 특정 요소를 그룹해야 하는 경우에 한하여 div 요소를 활용-->
+    <dl>
+      <div>
+        <dt>마늘</dt>
+        <dd>채소</dd>
+        <dd>한국인이 좋아함</dd>
+      </div>
+      <div>
+        <dt>상추</dt>
+        <dd>고기먹을 때 먹음</dd>
+      </div>
+    </dl>
+
+    <!--figure, figcaption-->
+    <!--figure 콘텐츠의 부연설명을 하는 콘텐츠를 담을 때 사용-->
+    <!--figcaption 요소는 콘텐츠의 부연설명을 하는 콘텐츠를 작성하는 요소-->
+    <p>우주~~~~~~~~~~</p>
+    <figure>
+      <img src="nasa.jpg" alt="" />
+      <figcaption>나사는 항공우주국이다</figcaption>
+    </figure>
+    <p>우주~~~~~~~2</p>
+
+    <!--main 요소-->
+    <!--해당 애플리케이션이나 페이지에서 가장 중요한 콘텐츠를 담는 컨테이너 요소-->
+    <!--한 페이지 내에서 한 번만 사용 가능-->
+    <main>
+    <!--메인 콘텐츠-->
+    </main>
+    <!--hidden 속성 등을 활용하여 main 요소를 감춘 경우에는 여러번 사용 가능-->
+    <!--활성화 된 main 요소는 언제나 하나만 존재해야 한다.-->
+    <!--싱글페이지 어플리케이션을 개발할 때 콘텐츠 별로 별도의 ui노출을 할 때 메인 요소를 여러개 두고 토글하는 식으로 활용-->
+    <main hidden></main>
+    <main hidden></main>
+    <main hidden></main>
+
+    <!--div 요소-->
+    <!--div 요소는 의미 없이 CSS등의 목적으로 여러 요소를 그루핑할 때 사용-->
+    <!--div 요소는 최후의 수단으로만 활용-->
+    <div></div>
+
+
+    
+  </body>
+</html>

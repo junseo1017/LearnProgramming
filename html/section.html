@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--body 요소는 콘텐츠를 담는 요소-->
+    <!--body 요소 내부가 컨텐츠 대부분을 차지함, 용량이나 시멘틱에 신경을 많이 써야함-->
+    
+    <!--heading 요소 : 제목-->
+    <!--h1~6 중요도, 단계에 따라 나열됨-->
+    <!--heading 요소를 사용하면 제목을 포함하는 익명 영역(anonymous section)을 생성-->
+    <!--아래의 경우 h1 이후에 또 다른 h1태그를 만날때까지의 h요소는 h1 영역에 종속되고 p에 콘텐츠가 담겨있다고 인식-->
+    <!--heading 요소를 잘 활용하면 페이지 전체의 outline을 그리는 데 용이해짐-->
+    <h1>HTML Section 요소</h1>
+    <p>ㅎㅇㅎㅇ 컨텐츠 설명 위한 문서임</p>
+    <h2>HTML Article</h2>
+    <p>ㅎㅇㅎㅇ 컨텐츠 설명 위한 문서임</p>
+    <h2>HTML Aside 요소</h2>
+    <p>sdadasdsadasds</p>
+    <!--HTML Section 요소-->
+    <!--  ㅣHTML Article 요소-->
+    <!--  ㅣHTML Aside 요소-->
+
+    <!-- section 요소 , article 요소-->
+    <!-- 콘텐츠의 독립성에 따라 article과 section을 다르게 사용-->
+    <!-- article 콘텐츠가 독립적일 때-->
+    <!-- section 콘텐츠가 다른 콘텐츠와 연관이 있을 때(범용적)-->
+    <!-- div는 최후의 수단으로 남겨놓아야 함-->
+    <!-- article & section 요소 내에서는 heading 사용을 권장-->
+    <article>
+        <h1>HTML Section 요소</h1>
+        <p>ㅎㅇㅎㅇ 컨텐츠 설명 위한 문서임</p>
+       
+        <section>
+            <h2>HTML Article</h2>
+            <p>ㅎㅇㅎㅇ 컨텐츠 설명 위한 문서임</p>
+        </section>
+        
+        <section>
+            <h2>HTML Aside 요소</h2>
+            <p>sdadasdsadasds</p>
+        </section>
+    </article>
+
+    <!--header, hgroup 요소-->
+    <!--header는 특정한 콘텐츠의 시작부분을 나타내는 요소-->
+    <article>
+        <!--nav : 페이지 네비게이션 콘텐츠를 담는 요소-->
+        <nav>
+            <a href="#html-section">html 섹션 요소</a>
+            <a href="#html-article">html 아티클 요소</a>
+        </nav>
+        <header>
+            <!--hgroup 요소는 heading 요소를 그룹화하여 제목-부제목 관계를 만듬-->
+            <hgroup id="html-section">
+                <h1>HTML Section 요소</h1>
+                <h2>html 부제목1</h2>
+            </hgroup>   
+            <p>ㅎㅇㅎㅇ 컨텐츠 설명 위한 문서임</p>
+        </header>
+
+        <section id="html-article">
+            <h2>HTML Article</h2>
+            <p>ㅎㅇㅎㅇ 컨텐츠 설명 위한 문서임</p>
+        </section>
+        
+        <section>
+            <h2>HTML Aside 요소</h2>
+            <p>sdadasdsadasds</p>
+        </section>
+
+        <!--footer & address 요소-->
+        <footer>
+        <!--콘텐츠의 마무리-->
+        <!--copyright, 작성자 정보, 작성일-->
+        <!--address 요소 : contact information을 남김-->
+           <address>
+            <p>
+                작성자 : <a href="dklsndklanskl@gnaver.com">준서</a> 
+            </p>
+            <p>
+                주소주소주소주소
+            </p>
+        <!--publication information-->
+            <p>
+                2022-02-15
+            </p>
+           </address>
+        </footer>
+        <!--aside : 핵심 콘텐츠와 관련이 있기는 하나, 콘텐츠 전체의 흐름과는 크게 관련 없는 콘텐츠-->
+        <!-- 콘텐츠 추천, 광고 등-->
+        <aside>
+            <iframe src="ad.html"></iframe>
+        </aside>
+    </article>
+
+    <!--heading 요소를 활용하여 콘텐츠의 제목을 나타낼 수 있음-->
+    <!--article, section 요소는 페이지의 구역을 나누기 때문에 굉장히 중요 div x-->
+    <!--header, footer, nav, aside 요소는 각 용법에 따라 적극적으로 활용-->
+    <!--hgroup 요소를 통해 heading을 그루핑 할 수 있음-->
+    <!--address 요소를 통해 페이지 카피라이트 혹은 출처 혹은 기타 등등을 담을 수 있음-->
+
+</body>
+</html>

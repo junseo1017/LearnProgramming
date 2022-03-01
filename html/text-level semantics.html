@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>text-level semantics</title>
+  </head>
+  <body>
+    <!--html 요소내에서 텍스트로 취급되는 요소-->
+    <!--텍스트 사이에서 텍스트로 취급되는 요소-->
+
+    <!-- a 요소-->
+    <!-- HTML 내에서 하이퍼텍스트 (링크)를 생성할 때 사용하는 요소-->
+    <a href="https://naver.com">네이버</a>
+    <!-- href 속성은 필수값은 아님 -->
+    <!-- 활성화 상태 / 비활성화 상태-->
+    <a>네이버</a>
+    <!-- a 요소 내에는 다른 a 요소를 삽일할 수 없음.-->
+    <!--인터렉티브 콘텐츠 내에는 다른 인터렉티브 콘텐츠를 넣으면 안 됨.-->
+    <div>
+      <a href="google.com">
+        <h1>google</h1>
+        <p>검색 포털</p>
+      </a>
+      <button type="button">선호하는 url에 추가</button>
+    </div>
+    <!--a요소 hash link-->
+    <nav>
+      <a href="#html-em">HTML EM 요소</a>
+      <a href="#html-strong">html strong 요소</a>
+    </nav>
+    <h2 id="html-em">html em 요소</h2>
+    <h2 id="html-strong">html strong 요소</h2>
+
+    <!-- em(emphasize) 요소, strong 요소-->
+    <!-- 둘 다 강조하는 요소-->
+    <!-- strong은 조금 더 강한 강조 : warning, Attention, required-->
+    <!-- em은 보편적인 강조-->
+    <strong>주의하세요</strong>
+    <h1>chap.1</h1>
+    . <strong>hello world</strong> <em>감자</em>는 맛있습니다.
+
+    <!-- q, cite 요소 -->
+    <!-- q 요소, 인용구를 나타내는 요소 -->
+    <!-- q 텍스트 내부에서 인용을 활용할 때 사용-->
+    <!-- cite 요소, 실체가 있는 물건이나 사이트 등을 인용해올 때 사용-->
+    <p><q>html is awesome</q>is on the<cite>smashing magazine</cite></p>
+    <p><cite>monocle</cite>이라는 매거진을 읽고 있습니다.</p>
+
+    <!--dfn, abbr 요소-->
+    <!--dfn : 해당 페이지에서 최초로 정의된 용어를 나타낼 때 사용-->
+    <!--abbr : 약어를 나타내는 요소 -->
+    <p><dfn id="#whatwg"><abbr title="Web Hypertext Application">whatwg</abbr></dfn>는 웹 표준화 기구입니다.</p>
+    <p>
+        <a href="#whatwg">whatwg</a>에서 제정한 표준~~~~
+    </p>
+  </body>
+</html>

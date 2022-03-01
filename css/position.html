@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 20px;
+        background:red;
+    }
+    .container{
+        background:yellow;
+        left : 20px;
+        top: 20px;
+        position: relative;
+    }
+    .box{
+        background:blue;
+        left: 20px;
+        top: 20px;
+        position: relative;
+    }
+</style>
+<body>
+
+    <!--position 
+
+    static : css에서 지정한 default value인 static이 있다. html에 정의된 순서대로 자연스럽게 브라우저 상에 보여지는 것을 의미. 위치와 관련한 설정을 하지 않은 상태.
+    
+    relative : 원래 아이템이 있어야 하는 자리에서 상대적으로 이동. 이동을 하기 위한 최소한의 포지션 설정. 
+    
+    absolute : 내 아이템이 담겨있는 내 아이템과 가장 가까이에 있는 박스 안에서 위치변경이 일어남 (크기를 지정해야 함), (static이 아닌 포지션이 설정되면 그것을 기준으로 위치 설정이 됨.)
+    
+    fixed : 상자 안에서 벗어나서 윈도우 안에서 움직임
+    
+    sticky : 원래 있어야 하는 자리에 고정되지만 스크롤해도 그 위치에 그대로 고정됨. -->
+
+    <article class="container">
+        <div></div>
+        <div class="box">i'm box</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </article>
+</body>
+</html>

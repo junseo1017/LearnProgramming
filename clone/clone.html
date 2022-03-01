@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube clone</title>
+    <style>
+        .header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: black;
+            border: none;
+        }
+        .main{
+            position: relative;
+            height: 0;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+        }
+        .main iframe{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+        }
+        .half{
+            display:flex;
+            flex-direction: row;
+            justify-content:first baseline;
+            flex-wrap: wrap;
+        }
+        .description{
+            display:flex;
+            flex-direction: column;
+            order:2;
+        }
+        .description .hashtag{
+            font-size: small;
+            color:blue;
+        }
+        .description .title{
+            font-size: medium;
+        }
+        .description .views{
+            font-size: x-small;
+            color:gray;
+        }
+        .subscribe{
+            display:flex;
+            flex-direction: row;
+            justify-content:left;
+            order: 3;
+        }
+        .notimportant{
+            display: flex;
+            flex-direction: column;
+            order:4;
+        }
+        .gg{
+            display: flex;
+            flex-direction: row;
+        }
+        .ww{
+            display: flex;
+            flex-direction: row;
+        }
+        .ww title{
+            font-size: small;
+        }
+        .ww writer{
+            font-size: x-small;
+        }
+        .ww views{
+            font-size: xx-small;
+        }
+    </style>
+</head>
+<body>
+    <section class="header">
+        <a href="youtubeclone.com">
+            <img width=300px height=50px src="22.png" alt="유튜브 로고 이미지">
+        </a>
+          <button type="button">선호하는 url에 추가</button>
+    </section>
+    <section class="main">
+        <main>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/n0j5NPptyM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>        
+        </main>
+    </section>
+    <section class="half">
+        <section class="sidecontent">
+            <section class="description">
+                <div class="hashtag">
+                    <p>#Dreamcoding #Dreamcoders #junseo</p>
+                </div>
+                <div class="title">
+                    <p>Clone coding:Youtube Mobile Website유튜브 모바일 웹사이트 따라 만들기</p>
+                </div>
+                <div class="views">
+                    <p>1m views 1 month ago</p>
+                </div>
+            </section>
+            <section class="subscribe">
+                <button></button>
+                <h1>
+                    준서
+                </h1>
+                <p>subscribe</p>
+            </section>
+        </section>
+        <section class="notimportant">
+            <section>
+                <p>Up next</p>
+            </section>
+            <section class="recommand">
+                <section class="gg">
+                    <button></button>
+                    <section clsss="ww">
+                        <div class="title">추천영상입니다ddddddddddddddqwdnqwfqwnfoqwfnoiwqnfoiqwnfowqnfoiqnfoiq.</div>
+                        <div class="writer">작성자명입니다</div>
+                        <div class="views">뷰 수입니다.</div>
+                    </section>
+                </section>
+                <section class="gg">
+
+                </section>
+                <section class="gg">
+                    
+                </section>
+            </section>
+        </section>
+    </section>
+    </article>
+</body>
+</html>
