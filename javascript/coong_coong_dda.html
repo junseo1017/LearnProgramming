@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿵쿵따</title>
+</head>
+<body>
+    <div><span id = 'order'></span>번째 참가자</div>
+    <div>제시어 : <span id = 'word'></span></div>
+    <input type="text">
+    <button>입력</button>
+<script>
+const number = parseInt(prompt('몇 명입니까?'));
+const $button = document.querySelector('button');
+const $input = document.querySelector('input');
+const $word = document.querySelector('#word');
+const $order = document.querySelector('#order');
+let word;
+let newWord;
+
+if(!number){
+    alert('press f5 button');
+} else {
+    $order.textContent = 1;
+} 
+
+const onClickButton = () => {
+        if (!word || word[word.length-1] === newWord[0]){
+                word = newWord;
+                if(word.length === 3){
+                    $word.textContent = word;
+                    const order = Number($order.textContent);
+                    if (order + 1 > number) {
+                    $order.textContent = 1;
+                    } else {
+                    $order.textContent = order + 1;
+                } 
+            } else {
+                alert('세글자 입력하세요');
+            }
+    }  else if (word[word.length-1] === newWord[0] && word.length === 3){
+    } else {
+        alert('틀렸습니다');
+    }
+    $input.value = '';
+    $input.focus();
+}
+
+const onInput = (event) => {
+    newWord = event.target.value;
+};
+
+$button.addEventListener('click', onClickButton);
+$input.addEventListener('input',onInput);
+
+</script>
+</body>
+</html>
