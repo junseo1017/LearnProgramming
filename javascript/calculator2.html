@@ -45,19 +45,18 @@
         let operator = '';
         const $operator = document.querySelector('#operator');
         const $result = document.querySelector('#result');
+
         const onClickNumber = (event) => {
-            if (operator) {
+            if(operator){
+                if(!numTwo){
+                    $result.value='';
+                }    numTwo += event.target.textContent;
+                $result.value += event.target.textContent;
+            } else {
                 numOne += event.target.textContent;
                 $result.value += event.target.textContent;
-                return;
-            }             
-            if(!numTwo){
-                    $result.value = '';
-                }
-                numTwo += event.target.textContent;
-                $result.value += event.target.textContent;
-        }; 
-        document.querySelector('#num-0').addEventListener('click',onClickNumber);
+            }
+        }
         document.querySelector('#num-1').addEventListener('click',onClickNumber);
         document.querySelector('#num-2').addEventListener('click',onClickNumber);
         document.querySelector('#num-3').addEventListener('click',onClickNumber);
@@ -67,61 +66,59 @@
         document.querySelector('#num-7').addEventListener('click',onClickNumber);
         document.querySelector('#num-8').addEventListener('click',onClickNumber);
         document.querySelector('#num-9').addEventListener('click',onClickNumber);
+        document.querySelector('#num-0').addEventListener('click',onClickNumber);
 
-        const onClickOperator = (op) => () => { // 고차 함수 (high order function) : 함수가 함수를 리턴하는 함수 / 함수의 중복을 없애기 위해 삭제된다. 
-            if (numOne){
+        const onClickOperator = (op) => () => {
+            if(numOne){
+                if(numTwo){
+                    onClickCalulator();
+                }
                 operator = op;
                 $operator.value = op;
-            } else {
-                alert('숫자 입력');
-            }
+                }
+             else{
+                numOne = '0';
+                operator = op;
+                $operator.value = op;
+                }
         }
         document.querySelector('#plus').addEventListener('click',onClickOperator('+'));
         document.querySelector('#minus').addEventListener('click',onClickOperator('-'));
         document.querySelector('#divide').addEventListener('click',onClickOperator('/'));
         document.querySelector('#multiply').addEventListener('click',onClickOperator('*'));
-        document.querySelector('#calculate').addEventListener('click', () => {
-        if (numTwo){
-            switch(operator){
-                case '+':
+        
+        const onClickCalulator = () => {
+            if(numTwo){
+                switch(operator){
+                    case '+':
                     $result.value = parseInt(numOne) + parseInt(numTwo);
                     break;
-                case '-':
-                    $result.value = numOne - numTwo;
+                    case '-':
+                    $result.value = parseInt(numOne) - parseInt(numTwo);
                     break;
-                case '*':
-                    $result.value = numOne * numTwo;
+                    case '/':
+                    $result.value = parseInt(numOne)/parseInt(numTwo);
                     break;
-                case '/':
-                    $result.value = numOne / numTwo;
+                    case '*':
+                    $result.value = parseInt(numOne)*parseInt(numTwo);
                     break;
-                default:
+                    default :
                     break;
+                }
+                numOne = $result.value;
+                numTwo = '';
+            } else {
+                alert('숫자를 입력하세요');
             }
-        } else  {
-            alert('숫자를 입력하세요')
         }
-        });
-        document.querySelector('#clear').addEventListener('click', () => {
+        document.querySelector('#calculate').addEventListener('click',onClickCalulator);
+        document.querySelector('#clear').addEventListener('click',()=>{
             numOne = '';
             numTwo = '';
             operator = '';
             $operator.value = '';
             $result.value = '';
         });
-
     </script>
-</body>
-</html>
-
-
-<!-- const onClickNumber = (number) => (event) => {
-    if (operator) {
-     numTwo += number;
-    } else {
-        numOne += number;
-    }
-    $result.value+=number;
-}; // 고차 함수 (high order function) : 함수가 함수를 리턴하는 함수
-document.querySelector('#num-0').addEventListener('click',onClickNumber('0')); -->
-
+    </body>
+    </html>
