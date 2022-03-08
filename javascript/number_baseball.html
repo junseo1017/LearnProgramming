@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="input">
+        <button>확인</button>
+    </form>
+    <div id="logs"></div>
+    <script>
+    const $form = document.querySelector('#form');
+    const $input = document.querySelector('#input');
+    const $logs = document.querySelector('#logs');
+
+    const numbers =[];
+    for (let n = 0; n<9; n+=1){
+        numbers.push(n+1);
+    }
+    const answer = [];
+    for (let n = 0; n <= 3; n+=1){
+        const index = Math.floor(Math.random()*(numbers.length));
+        answer.push(numbers[index]);
+        numbers.splice(index, 1);
+    }
+
+    const tries = [];
+    function checkInput(input){
+        if (input.length !== 4){
+            return alert('4자리 숫자를 입력해주세요');
+        }
+        if (new Set(input).size !== 4){ // new Set 중복을 제거하는 함수 / size 중복된 숫자를 제거한 후의 글자 길이 
+            return alert('중복되지 않게 입력해주세요');
+        }
+        if (tries.includes(input)){ // includes 배열에 이미 있는 값을 검사하는 함수
+            return alert('이미 시도한 값입니다.');
+        }
+        return true;
+    }
+        $form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const value = $input.value;
+            $input.value = '';
+            if(!checkInput(value)){
+                return;
+            }
+            if(answer.join('') === value){ // 배열을 문자열로 바꾸는 메서드 ''를 안쓰면 쉼표가 생김 // 반대로 split 메서드는 문자열을 분리할 수 있음 
+                $logs.textContent = '홈런!';
+                return;
+            }
+            if(tries.length >= 9){
+                const message = document.createTextNode('패배!'); // 
+                $logs.appendChild(message); // append $logs안에 추가하는 메서드
+                return;
+            }
+            tries.push(value);
+        });
+    </script>
+</body>
+</html>
