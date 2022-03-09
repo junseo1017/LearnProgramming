@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자야구</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="input">
+        <button>확인</button>
+    </form>
+    <div id="logs"></div>
+<script>
+    const $form = document.querySelector('#form');
+    const $input = document.querySelector('#input');
+    const $logs = document.querySelector('#logs');
+    
+    // 정답 무작위로 뽑기
+    const number = [];
+    for(let n = 0; n < 9; n++){
+        number.push(n+1);
+    }
+    const answer = [];
+    for(let i = 0; i <= 3; i++){
+    const index = Math.floor(Math.random()*number.length);
+    answer.push(number[index]);
+    number.splice(index,1);
+    }
+
+    // 정답 형식 확인
+    const tries = [];
+    function checkInput(input){
+        if(input.length !== 4){
+            alert('4자리 숫자를 입력하세요');
+            return;
+        }
+        if(new Set(input).size !== 4){
+            alert('숫자가 중복되지 않게 입력해주세요');
+            return;
+        }
+        if(tries.includes(input)){
+            alert('이미 같은 답을 제출했습니다');
+            return;
+        }
+        return true;
+    }
+
+    // 정답 확인
+    $form.addEventListener('submit',(event)=>{
+        event.preventDefault();
+        const value = $input.value;
+        $input.value = '';
+        if(!checkInput(value)){
+            return;
+        }
+        if(value === answer.join('')){
+            $logs.append('홈런!');
+            return;
+        }
+        if(tries.length >= 9){
+            $logs.append(`패배! 정답은 ${answer.join('')} 였습니다.`);
+            return;
+        }
+
+        //볼, 스트라이크 검사
+        let strike = 0;
+        let ball = 0;
+        for(i=0; i<answer.length; i++){
+            const index = value.indexOf(answer[i]);
+            if(index > -1){
+                if(index === i){
+                    strike += 1;
+                } else {
+                    ball += 1;
+                }
+            }
+        }
+        $logs.append(`${value}:${strike} 스트라이크 ${ball} 볼 입니다`,document.createElement('br'));
+        tries.push(value);
+    });
+
+</script>
+</body>
+</html>
