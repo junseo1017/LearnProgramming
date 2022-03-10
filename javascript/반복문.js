@@ -83,6 +83,44 @@ for (let i = 0;i < 5; i++){
     }
 }
 
+// forEach 배열을 기준으로 배열요소를 반복하는 함수.
+// for문보다 성능은 좋지 않지만 배열메서드는 연달아 썼을 떄 편리함 forEach, map
+const ob = [];
+ob.forEach((element, index) => { 
+}); 
+// ob 배열 안에 있는 요소 하나하나씩 forEach 내부에 있는 함수를 적용함.
+const answer = [3,1,4,6];
+const value = '3214';
+let strike = 0;
+let ball = 0;
+// 아래는 for 문
+const num = value.indexOf(answer[i]);
+if (num > -1){
+    if(num === i){
+        strike +=1;
+    } else {
+        ball += 1;
+    }
+}
+// 아래는 forEach문
+answer.forEach((element, i) => {
+    const num = value.indexOf(element);
+    if (num > -1){
+        if(num === i){
+            strike +=1;
+        } else {
+            ball += 1;
+        }
+    }  
+});
+
+
+
+
+
+
+
+
 // 구구단을 출력하되, 결과에 짝수가 하나도 나오지 않게. continue 사용.
 for (let i = 0; i<=9; i++){
     if (i % 2 === 0) continue;

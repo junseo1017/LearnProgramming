@@ -29,6 +29,8 @@
     number.splice(index,1);
     }
 
+    const outs = [];
+
     // 정답 형식 확인
     const tries = [];
     function checkInput(input){
@@ -63,6 +65,11 @@
             $logs.append(`패배! 정답은 ${answer.join('')} 였습니다.`);
             return;
         }
+        if(outs.length == 3){
+            $logs.append('패배! 3아웃입니다.')
+            return;
+        }
+
 
         //볼, 스트라이크 검사
         let strike = 0;
@@ -77,10 +84,24 @@
                 }
             }
         }
-        $logs.append(`${value}:${strike} 스트라이크 ${ball} 볼 입니다`,document.createElement('br'));
-        tries.push(value);
+        
+        //아웃 검사
+        let out = 0;
+        for(i=0; i<answer.length; i++){
+            const outcheck = value.indexOf(answer[i]);
+            if(outcheck <= -1 && strike === 0 && ball === 0){
+                out += 1;
+                if(out = 4){
+                    outs.push(value);
+                    out = '';
+                    $logs.append(`${outs.length} 아웃입니다.`,document.createElement('br'));
+                    return;
+            }
+        }
+    }        
+    $logs.append(`${value}:${strike} 스트라이크 ${ball} 볼 입니다`,document.createElement('br'));
+    tries.push(value);
     });
-
 </script>
 </body>
 </html>
