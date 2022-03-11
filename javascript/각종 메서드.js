@@ -70,4 +70,4 @@ array.slice(-4,-1); // [3,4,5] 뒤에서부터 네번째부터 뒤에서 첫 번
 const array = [1,2,3,4,5,6];
 array.slice().sort((a,b) => b-a); //실행결과 [6,5,4,3,2,1] b-a 내림차순, a-b 오름차순.
 
-['af','ab'].sort((a,b) => a.localeCompare(b); // 실행결과 [ab,af] localecompare 메서드는 한글,영어 문자열 정렬을 실행함
+['af','ab'].sort((a,b) => a.localeCompare(b) // 실행결과 [ab,af] localecompare 메서드는 한글,영어 문자열 정렬을 실행함
