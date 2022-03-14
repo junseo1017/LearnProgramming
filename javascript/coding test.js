@@ -275,3 +275,68 @@ for(let i = 0;i<trans.length;i++){
 }
 }
 console.log(str.join(''));
+
+
+// 입력한 값 n보다 작은 수의 피보나찌 수열 메서드
+var list = [0,1,1];
+rl.on("line", function (line) {
+var zero = 0;
+var one = 1;
+var two = 1;
+for(;;){
+    if(list[list.length-1]<line){
+    zero = one + two;
+    list.push(zero);
+    one = two;
+    two = zero;
+    } else {
+    list.splice(-1,1);
+    break;
+    } 
+}
+console.log(list);
+
+
+
+
+//N줄 입력 처리
+var count = 0; // 몇 번째 입력인지 기록
+var N = 0; // 첫 번째 줄에 입력된 N
+var input = [];
+
+rl.on("line", function (x) {
+  count += 1; // 입력 횟수가 증가
+  if (count === 1) {
+    // 첫 번째 입력인 경우 앞으로 주어질 입력 개수 기록
+    N = x;
+  } else {
+    // 이후 입력되는 N개의 입력은 배열에 저장
+    input.push(x);
+  }
+  if (count > N) {
+    // N번 입력을 받은 뒤 종료
+    rl.close();
+  }
+}).on("close", function () {
+  // 입력 종료 후 동작할 코드
+  console.log(input);
+});
+
+// 여러 줄 입력 처리(몇 번 입력할지 확실할 때)
+var count = 0; // 몇 번째 입력인지 기록
+rl.on("line", function (x) {
+  count += 1; // 입력 횟수가 증가
+
+  if (count === 1) {
+    // 첫 번째 입력인 경우 동작
+  } else if (count === 2) {
+    // 두 번째 입력인 경우 동작
+  } else if (count === 3) {
+    // 세 번째 입력인 경우 동작
+  } else {
+    // 네 번째 입력인 경우 동작
+    rl.close(); // 입력 종료
+  }
+}).on("close", function () {
+  // 입력 종료 후 동작할 코드
+});
