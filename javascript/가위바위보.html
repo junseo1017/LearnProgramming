@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보</title>
+    <style>
+        #computer{
+            width:142px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="computer"></div>
+    <div>
+        <button id="scissors" class="'btn">가위</button>
+        <button id="rock" class="'btn">바위</button>
+        <button id="paper" class="'btn">보</button>
+    </div>
+    <div id="score">0</div>
+    <script>
+        const $computer = document.querySelector('#computer');
+        const $score = document.querySelector('#score');
+        const $scissors = document.querySelector('#scissors');
+        const $rock = document.querySelector('#rock');
+        const $paper = document.querySelector('#paper');
+        const IMG_URL = './rsp.png';
+        $computer.style.background = `url(${IMG_URL}) -440px 0`; //백그라운드 포지션 이미지의 위치를 조정 0 가위 -220 바위 -440 보
+        $computer.style.backgroundSize = 'auto 200px'; //높이를 200px로 지정하고 비율은 자동으로 조정
+
+        const rspX ={ //변수는 최대한 고유한 성질을 지닌걸로 선언하고, 그룹화 시킬 수 있는 것은 그룹화 시키기
+            scissors : '0',
+            rock : '-220px',
+            paper : '-440px',
+        };
+        let coord = '0';
+        setInterval(()=>{
+            if(coord = rspX.scissors){
+            coord = rspX.rock;
+            $computer.style.background = `url(${IMG_URL}) ${rspX.rock} 0`; 
+            $computer.style.backgroundSize = 'auto 200px'; // 백그라운드만 setInterval하면 백그라운드사이즈가 리셋되는 오류가 발생. 항상 같이 적어줘야 함.
+            } else if(coord = rspX.rock){
+            coord = rspX.paper;
+            $computer.style.background = `url(${IMG_URL}) ${rspX.paper} 0`; 
+            $computer.style.backgroundSize = 'auto 200px'; 
+            } else if(coord = rspX.paper){
+            coord = rspX.scissors;
+            $computer.style.background = `url(${IMG_URL}) ${rspX.scissors} 0`; 
+            $computer.style.backgroundSize = 'auto 200px'; 
+            }
+        }, 50);
+    </script>
+</body>
+</html>
