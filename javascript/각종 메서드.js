@@ -69,5 +69,22 @@ array.slice(-4,-1); // [3,4,5] 뒤에서부터 네번째부터 뒤에서 첫 번
 //mdn array.prototype.sort()를 참고하면 문자열 정렬에 대해서 확인할수있음.
 const array = [1,2,3,4,5,6];
 array.slice().sort((a,b) => b-a); //실행결과 [6,5,4,3,2,1] b-a 내림차순, a-b 오름차순.
+['af','ab'].sort((a,b) => a.localeCompare(b)); // 실행결과 [ab,af] localecompare 메서드는 한글,영어 문자열 정렬을 실행함
 
-['af','ab'].sort((a,b) => a.localeCompare(b) // 실행결과 [ab,af] localecompare 메서드는 한글,영어 문자열 정렬을 실행함
+
+//removeEventLisner
+//같은 값을 가지는 함수일 때 remove가 가능해짐
+
+const a = (값) => () => {
+    console.log('ㅇㅇ',값);
+} 
+tag.addEventLisner('click', a(1)); 
+//을 제거하고 싶을 경우
+tag.removeEventLisner('click', a(1));
+//위 코드르 실행하면 제거가 되지 않음. 함수는 객체이기 때문에 새로운 객체를 매번 생성하는 개념. 
+// 객체를 변수로 담아서 삭제해줘야 '같은 값'을 가짐
+// 따라서 위 이벤트리스너를 삭제하기 위해선 아래와 같이 변수 선언을 한 뒤 삭제 해줘야 함.
+const a1 = a(1);
+tag.addEventLisner('click', a1);
+tag.removeEventLisner('click', a1); 
+
