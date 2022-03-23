@@ -80,7 +80,7 @@
                     $score.textContent = `컴퓨터의 승리 ${my} : ${computera}`;
                 } else {
                     $score.textContent = `${message} ${my} : ${computera}`;
-                setTimeout(()=>{
+                    setTimeout(()=>{
                     clickable = true; // 버튼을 연달아 눌렀을 때 직전 인터벌이 초기화되지 않는 버그를 수정하기 위해 값을 새로 설정하기 전에 값을 초기화하는 작업
                     intervalId = setInterval(changeComputerHand, 50); // 타이머마다 아이디가 계속 달라지기 때문에 값을 새로 설정해야 함.
                 },1000);
