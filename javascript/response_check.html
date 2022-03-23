@@ -30,14 +30,31 @@
     <script>
         const $screen = document.querySelector('#screen');
         const $result = document.querySelector('#result');
-
+        let startTime;
+        let endTime;
+        const records = [];
         $screen.addEventListener('click',(event)=>{
             if(event.target.classList.contains('waiting')){
-
+                $screen.classList.replace('waiting','ready');
+                $screen.textContent = '초록색이 되면 클릭하세요';
+                setTimeout(()=>{
+                    startTime = new Date();
+                    $screen.classList.replace('ready','now');
+                    $screen.textContent = '지금 클릭하세요';
+                }, Math.floor(Math.random()* 1000)+2000);
             } else if(event.target.classList.contains('ready')){
-
+                alert("it's too fast");
+                $screen.className = 'waiting';
             } else if(event.target.classList.contains('now')){
-
+                endTime = new Date();
+                records.push(endTime-startTime);
+                const current = endTime-startTime;
+                const average = records.reduce((a,c)=>a+c)/records.length;
+                $result.textContent = `현재 ${current}ms, 평균 ${Math.floor(average)}ms`;
+                startTime = null;
+                endTime = null;
+                $screen.classList.replace('now','waiting');
+                $screen.textContent = '클릭해서 시작하세요';
             }
         });
     </script>

@@ -88,3 +88,19 @@ const a1 = a(1);
 tag.addEventLisner('click', a1);
 tag.removeEventLisner('click', a1); 
 
+//classList 
+태그.classList.add('클래스'); // 추가 이름이 중복되는 것은 무시한다.
+태그.classList.replace('기존클래스','수정클래스'); // 수정
+태그.classList.remove('클래스'); // 삭제
+
+// reduce 
+[1,2,3,4].reduce((a,c) => {return a+c;}, 0) // a는 누적값, c는 현재값, 0은 초기값 // 초기값이 생략되면 첫 번째 값이 초기값이 된다.
+// a:0 c:1
+// a:1 c:2
+// a:3 c:3
+// 리턴값은 최종 누적값
+[1,2,3,4].reduce((a,c)=>(a*c),1) // 실행결과 24
+// a:1 c:1
+// a:1 c:2
+// a:2 c:3...
+['a','b','c','d'].reduce((a,c,i) => {a[i] = c; return a},{}) //  i는 인덱스, 실행결과 객체리터럴로 변경됨
