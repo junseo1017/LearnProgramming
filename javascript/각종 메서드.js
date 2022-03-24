@@ -92,6 +92,7 @@ tag.removeEventLisner('click', a1);
 태그.classList.add('클래스'); // 추가 이름이 중복되는 것은 무시한다.
 태그.classList.replace('기존클래스','수정클래스'); // 수정
 태그.classList.remove('클래스'); // 삭제
+태그.classList.contains('클래스'); // 해당 클래스를 포함하는지 불린값을 반환한다.
 
 // reduce 
 [1,2,3,4].reduce((a,c) => {return a+c;}, 0) // a는 누적값, c는 현재값, 0은 초기값 // 초기값이 생략되면 첫 번째 값이 초기값이 된다.
@@ -104,3 +105,11 @@ tag.removeEventLisner('click', a1);
 // a:1 c:2
 // a:2 c:3...
 ['a','b','c','d'].reduce((a,c,i) => {a[i] = c; return a},{}) //  i는 인덱스, 실행결과 객체리터럴로 변경됨
+[1,2,3,4].reduce((a,c)=>{
+    a[c] = c*10;
+    return a;
+}, {}) // 실행결과 {1:10, 2:20, 3:30, 4:40}
+
+
+//Math.module
+//round 반올림, ceil 올림, floor 내림
