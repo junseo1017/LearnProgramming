@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-03-25T01:18:42.972Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36" etag="4mp1fK2VJrDqFLe4QqRs" version="17.2.1" type="github">
+<mxfile host="app.diagrams.net" modified="2022-03-25T02:31:35.760Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.82 Safari/537.36" etag="SKYmRNXUaNT0-QoH-jcN" version="17.2.1" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="425" dy="7495" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1108" dy="7496" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -695,27 +695,27 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-9" value="칸을 클릭" style="shape=ext;double=1;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="318" y="-5920" width="80" height="80" as="geometry" />
+          <mxGeometry x="423" y="-5921" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-10" target="BKNJBuCUbuQPr_-5gVKL-14">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="420" y="-5760" as="targetPoint" />
+            <mxPoint x="525" y="-5761" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-10" target="BKNJBuCUbuQPr_-5gVKL-17">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-10" value="칸이 비어있는가?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="318" y="-5800" width="80" height="80" as="geometry" />
+          <mxGeometry x="423" y="-5801" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-14" value="대기" style="shape=ext;double=1;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="458" y="-5800" width="80" height="80" as="geometry" />
+          <mxGeometry x="563" y="-5801" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-17" target="BKNJBuCUbuQPr_-5gVKL-19">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-17" value="칸에 값이 입력된다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="180" y="-5790" width="120" height="60" as="geometry" />
+          <mxGeometry x="285" y="-5791" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-19" target="BKNJBuCUbuQPr_-5gVKL-21">
           <mxGeometry relative="1" as="geometry" />
@@ -724,16 +724,16 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-19" value="승부가 났는가?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="200" y="-5710" width="80" height="80" as="geometry" />
+          <mxGeometry x="305" y="-5711" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-21" target="BKNJBuCUbuQPr_-5gVKL-23">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-21" value="승자 표시" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="180" y="-5600" width="120" height="60" as="geometry" />
+          <mxGeometry x="285" y="-5601" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-23" value="끝" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="200" y="-5520" width="80" height="80" as="geometry" />
+          <mxGeometry x="305" y="-5521" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-27" target="BKNJBuCUbuQPr_-5gVKL-29">
           <mxGeometry relative="1" as="geometry" />
@@ -742,22 +742,22 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-27" value="무승부인가" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="321" y="-5710" width="80" height="80" as="geometry" />
+          <mxGeometry x="426" y="-5711" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-29" value="끝" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="321" y="-5520" width="80" height="80" as="geometry" />
+          <mxGeometry x="426" y="-5521" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="BKNJBuCUbuQPr_-5gVKL-31" target="BKNJBuCUbuQPr_-5gVKL-35">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-31" value="넘긴다" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="458" y="-5700" width="120" height="60" as="geometry" />
+          <mxGeometry x="563" y="-5701" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-34" value="무승부 표시" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="301" y="-5600" width="120" height="60" as="geometry" />
+          <mxGeometry x="406" y="-5601" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BKNJBuCUbuQPr_-5gVKL-35" value="대기" style="shape=ext;double=1;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="478" y="-5600" width="80" height="80" as="geometry" />
+          <mxGeometry x="583" y="-5601" width="80" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
