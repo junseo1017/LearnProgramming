@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>틱택토</title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        td{
+            border: 1px solid black;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const { body } = document;
+        const $table = document.createElement('table');
+        const $result = document.createElement('result');
+        let turn = 'O';
+        const rows = [];
+
+        for(let i =0; i<3;i++){
+            const $tr = document.createElement('tr');
+            const cells = [];
+            for(let j=0;j<3;j++){
+                const $td = document.createElement('td');
+                cells.push($td);
+                $td.addEventListener('click',(event)=>{
+                    
+                    if(event.target.textContent) return; // 칸에 글자 확인, 이벤트 중지 시키고 싶을 때는 removeeventlistener보다 조건을 부여하고 리턴을 통해 함수를 중지시키는 것이 편함.
+                    event.target.textContent=turn;
+                    //승부 확인
+                    if(turn === 'O'){ 
+                        turn = 'X';
+                    } else if (turn === 'X'){
+                        turn = 'O';
+                    }
+                })
+                $tr.append($td);
+            }
+            $table.appendChild($tr);
+            rows.push(cells);
+        }
+        body.append($table);
+        body.append($result);
+    </script>
+</body>
+</html>

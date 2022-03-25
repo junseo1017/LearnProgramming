@@ -110,6 +110,61 @@ tag.removeEventLisner('click', a1);
     return a;
 }, {}) // 실행결과 {1:10, 2:20, 3:30, 4:40}
 
-
 //Math.module
 //round 반올림, ceil 올림, floor 내림
+
+//구조 분해 할당(destructuring)
+const { body, createElement } = document;
+// 위 식은 아래와 같은 의미
+const body = document.body;
+const createElement = document.createElement;
+// 어떤 객체의 속성을 변수에 담는 변수명이 같을 때
+// 식의 가독성을 더 높여줄 수 있다. 
+
+// 배열에도 아래와 같이 적용 가능
+const arr = [1,2,3,4,5];
+const one = arr[0];
+const two = arr[1];
+const three = arr[2];
+const four = arr[3];
+const five = arr[4];
+// 구조 할당 분해 적용 후
+const [one,two,three,four,five] = arr;
+const [one,,three,,five] = arr; // two,four를 쓰지 않을 때 칸을 비우면 됨.
+
+// 객체 리터럴에도 적용 가능
+const obj = {a:1,b:2};
+const a = obj.a;
+const b = obj.b;
+// 위 2줄을 아래 한 줄로 표현 가능
+const {a,b} = obj;
+
+//응용 버전 a,c,e에 구조분해할당 
+const obj = {
+    a:'hello',
+    b: {
+        c:'hi',
+        d:{e:'wow'},
+    },
+};
+
+const { a, b : { c , d:{ e }}}=obj;
+// b,d는 구조분해할당할 수 없음 (중괄호 여는 애들)
+
+
+const $table = document.createElement('table');
+const rows = [];
+for(let i = 0;i<5;i++){
+    const $tr = document.createElement('tr');
+    const cells = [];
+    for(let j=0;j<4;j++){
+        const $td = document.createElement('td');
+        $tr.appendChild($td);
+        cells.push($td);
+    }
+    $table.appendChild($tr);
+    rows.push(cells);
+}
+document.body.append($table);
+
+    
