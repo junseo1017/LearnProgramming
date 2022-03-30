@@ -147,24 +147,43 @@ const obj = {
         d:{e:'wow'},
     },
 };
-
 const { a, b : { c , d:{ e }}}=obj;
 // b,d는 구조분해할당할 수 없음 (중괄호 여는 애들)
 
 
-const $table = document.createElement('table');
-const rows = [];
-for(let i = 0;i<5;i++){
-    const $tr = document.createElement('tr');
-    const cells = [];
-    for(let j=0;j<4;j++){
-        const $td = document.createElement('td');
-        $tr.appendChild($td);
-        cells.push($td);
-    }
-    $table.appendChild($tr);
-    rows.push(cells);
-}
-document.body.append($table);
+// 이벤트버블링
+// html의 속성으로 발생하는 현상
+// 자식태그에서 이벤트가 발생했을 경우 부모태그를 따라서 이벤트가 발생함 td 클릭시 > tr > table > body
+event.currentTarget; //을 통해서 이벤트버블링이 발생하는 타겟을 좀 더 디테일하게 지정할 수 있음
+event.stopPropagation(); // 이벤트 버블링을 막기위해 사용하는 메서드
+// 이벤트캡쳐링
+// 버블링과 반대로 부모 태그를 클릭했을 때 자식 태그에게 이벤트가 발생함
+// 특정 메서드를 사용해야 캡쳐링이 발생함
+// 기본값은 false
 
-    
+// 이차원배열 이중반복문을 통핸 인덱스 구하기로 위치 산출하기
+const check = () => {
+    let rowIndex;
+    let cellIndex;
+    rows.forEach((row,ri) => {
+        row.forEach((cell,ci)=>{
+            if(cell === target){
+                rowIndex = ri;
+                cellIndex = ci;
+            }
+        });
+    });
+}
+
+// 유사배열
+$tag.children //이 유사배열인 경우
+Array.from($tag.children); //을 통해 배열로 바꿔줄 수 있다.
+Array.from($tag.children).forEach(()=>{}); // 등의 배열 메서드를 사용할 수 있음
+
+// every
+// 모두 true여야 true이고, 하나라도 false이면 false가 되는 메서드
+// 기존 사용했던 forEach는 하나의 false를 발견해도 남은 배열에 실행되는 비효율적인 메서드
+// every는 일차원 배열에서 사용 가능 하지만 flat 메서드를 통해 2차원 배열을 1차원 배열로 바꿀 수 있음
+array.flat(); // << ex
+array.flat().every((td)=>{td.texContent}); // 텍스트가 모두 차있으면 true
+array.flat().some((td)=>{td.texContent}); // 텍스트가 하나라도 차있으면 true;   

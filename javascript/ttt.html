@@ -25,28 +25,77 @@
         let turn = 'O';
         const rows = [];
 
+        const checkWinner = (target) => {
+            let rowIndex = target.parentNode.rowIndex;
+            const cellIndex = target.cellIndex;
+        let hasWinner = false; // 세 칸 채워졌는지 확인
+        //가로줄 검사
+        if(
+            rows[rowIndex][0].textContent === turn &&
+            rows[rowIndex][1].textContent === turn &&
+            rows[rowIndex][2].textContent === turn 
+        ) {
+            hasWinner =true;
+        }
+        //세로줄 검사
+        if(
+            rows[0][cellIndex].textContent === turn &&
+            rows[1][cellIndex].textContent === turn &&
+            rows[2][cellIndex].textContent === turn 
+        ) {
+            hasWinner = true;
+        }
+        // 대각선 검사
+        if(
+            rows[0][0].textContent === turn &&
+            rows[1][1].textContent === turn &&
+            rows[2][2].textContent === turn 
+        ){
+            hasWinner = true;
+        }
+        if(
+            rows[0][2].textContent === turn &&
+            rows[1][1].textContent === turn &&
+            rows[2][0].textContent === turn 
+        ){
+            hasWinner = true;
+        }
+        return hasWinner;
+    };
+
+        const callback = (event) => {
+            if(event.target.textContent) return; // 칸에 글자 확인, 이벤트 중지 시키고 싶을 때는 removeeventlistener보다 조건을 부여하고 리턴을 통해 함수를 중지시키는 것이 편함.
+            event.target.textContent = turn;
+            if(checkWinner(event.target)){
+                $result.textContent = `${turn}님의 승리`;
+                $table.removeEventListener('click',callback);
+                return;
+            }
+            const draw = rows.flat().every((cell)=>{cell.textContent});
+            if(draw){
+                $result.textContent = '무승부';
+                return;
+            }
+            if (turn ==='O'){
+                    turn = 'X';
+                } else if (turn ==='X'){
+                    turn = 'O';
+                }
+            // 삼항연산자로 표현 가능 > turn = (trun === 'X') ? 'O' : 'X';
+        };
+        
         for(let i =0; i<3;i++){
             const $tr = document.createElement('tr');
             const cells = [];
             for(let j=0;j<3;j++){
                 const $td = document.createElement('td');
                 cells.push($td);
-                $td.addEventListener('click',(event)=>{
-                    
-                    if(event.target.textContent) return; // 칸에 글자 확인, 이벤트 중지 시키고 싶을 때는 removeeventlistener보다 조건을 부여하고 리턴을 통해 함수를 중지시키는 것이 편함.
-                    event.target.textContent=turn;
-                    //승부 확인
-                    if(turn === 'O'){ 
-                        turn = 'X';
-                    } else if (turn === 'X'){
-                        turn = 'O';
-                    }
-                })
                 $tr.append($td);
             }
             $table.appendChild($tr);
             rows.push(cells);
         }
+        $table.addEventListener('click',callback);
         body.append($table);
         body.append($result);
     </script>

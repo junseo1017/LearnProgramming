@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>틱택토</title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        td{
+            border: 1px solid black;
+            width: 80px;
+            height: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const { body } = document;
+        const $table = document.createElement('table');
+        const $result = document.createElement('div');
+        let turn = 'O';
+        const rows = [];
+//[
+// [td, td, td]
+// [td, td, td]
+// [td, td, td]
+//]
+
+        const winnerCheck = (target) => {
+            let check = false;
+            const row = target.parentNode.rowIndex;
+            const cell = target.cellIndex;
+            if(
+                rows[row][0].textContent == turn &&
+                rows[row][1].textContent == turn &&
+                rows[row][2].textContent == turn
+            )
+            check = true;
+            if(
+                rows[0][cell].textContent == turn &&
+                rows[1][cell].textContent == turn &&
+                rows[2][cell].textContent == turn
+            )
+            check = true;
+            if(
+                rows[0][0].textContent == turn &&
+                rows[1][1].textContent == turn &&
+                rows[2][2].textContent == turn
+            )
+            check = true;
+            if(
+                rows[0][2].textContent == turn &&
+                rows[1][1].textContent == turn &&
+                rows[2][0].textContent == turn
+            )
+            check = true;    
+            return check;
+        }
+
+        const callback = (event) => {
+            if(event.target.textContent) return;
+            event.target.textContent = turn;
+
+            if(winnerCheck(event.target)){
+                $result.textContent = '승리';
+                $table.removeEventListener('click',callback);
+                return;
+            }
+
+            const checkDraw = rows.flat().every((cell) => {return cell.textContent});
+            if(checkDraw){
+                $result.textContent = '무승부';
+                return;
+            }
+            console.log(checkDraw);
+            if(turn === 'O'){
+                turn = 'X';
+            } else turn = 'O';
+        }
+
+        for(let i = 0;i<3;i++){
+            const $tr = document.createElement('tr');
+            const cells = [];
+            for(let j = 0;j<3;j++){
+                const $td = document.createElement('td');
+                $tr.appendChild($td);
+                cells.push($td);
+            }
+            $table.appendChild($tr);
+            rows.push(cells);
+        }
+        $table.addEventListener('click',callback);
+        body.append($table);
+        body.append($result);
+    
+
+
+    </script>
+</body>
+</html>
