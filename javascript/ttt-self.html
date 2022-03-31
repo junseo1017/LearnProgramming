@@ -29,7 +29,6 @@
 // [td, td, td]
 // [td, td, td]
 //]
-
         const winnerCheck = (target) => {
             let check = false;
             const row = target.parentNode.rowIndex;
@@ -60,28 +59,40 @@
             check = true;    
             return check;
         }
-
-        const callback = (event) => {
-            if(event.target.textContent) return;
-            event.target.textContent = turn;
-
-            if(winnerCheck(event.target)){
-                $result.textContent = '승리';
+        const checkWinandDraw = (target) => {
+        const hasWinner = winnerCheck(target);
+            if (hasWinner){
+                $result.textContent = `${turn}의 승리`;
                 $table.removeEventListener('click',callback);
                 return;
             }
-
             const checkDraw = rows.flat().every((cell) => {return cell.textContent});
             if(checkDraw){
                 $result.textContent = '무승부';
+                return;            
+                }
+            turn = turn === 'X'? 'O':'X';
+            };
+
+        let clickable = true;
+        const callback = (event) => {
+            if(!clickable){
                 return;
             }
-            console.log(checkDraw);
-            if(turn === 'O'){
-                turn = 'X';
-            } else turn = 'O';
+            if(event.target.textContent) return;
+            event.target.textContent = turn;
+            checkWinandDraw(event.target);
+            if(turn ==='X'){
+                clickable = false;
+                const emptyCells = rows.flat().filter((v)=>!v.textContent);
+                const randomCell = emptyCells[Math.floor(Math.random()*emptyCells.length)];
+                setTimeout(()=>{
+                randomCell.textContent = 'X';
+                checkWinandDraw(randomCell);
+                clickable=true;
+                },1000);
+            }
         }
-
         for(let i = 0;i<3;i++){
             const $tr = document.createElement('tr');
             const cells = [];

@@ -154,7 +154,7 @@ const { a, b : { c , d:{ e }}}=obj;
 // 이벤트버블링
 // html의 속성으로 발생하는 현상
 // 자식태그에서 이벤트가 발생했을 경우 부모태그를 따라서 이벤트가 발생함 td 클릭시 > tr > table > body
-event.currentTarget; //을 통해서 이벤트버블링이 발생하는 타겟을 좀 더 디테일하게 지정할 수 있음
+event.currentTarget; // 이벤트가 발생한 태그가 아닌 이벤트를 연결한 태그에 접근하기.
 event.stopPropagation(); // 이벤트 버블링을 막기위해 사용하는 메서드
 // 이벤트캡쳐링
 // 버블링과 반대로 부모 태그를 클릭했을 때 자식 태그에게 이벤트가 발생함
@@ -176,7 +176,7 @@ const check = () => {
 }
 
 // 유사배열
-$tag.children //이 유사배열인 경우
+$tag.children //이 유사배열인 경우 (children 또는 parentNode)
 Array.from($tag.children); //을 통해 배열로 바꿔줄 수 있다.
 Array.from($tag.children).forEach(()=>{}); // 등의 배열 메서드를 사용할 수 있음
 
