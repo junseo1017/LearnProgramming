@@ -187,3 +187,26 @@ Array.from($tag.children).forEach(()=>{}); // 등의 배열 메서드를 사용�
 array.flat(); // << ex
 array.flat().every((td)=>{td.texContent}); // 텍스트가 모두 차있으면 true
 array.flat().some((td)=>{td.texContent}); // 텍스트가 하나라도 차있으면 true;   
+
+
+//JSON.parse 
+//JSON.stringify
+//성능이 느리고 함수나 Math, Date 같은 객체를 복사할 수 없음. (lodash 같은 라이브러리 사용)
+//객체를 변수에 대입할 때는 복사인지, 참조인지 잘 판단해야 함. 
+monsterList = [{ name : '슬라임', hp : 25, att:10, xp:10}];
+const monster1 = JSON.parse(JSON.stringify(monsterList[0])); // monster1에 '복사'하는 개념. 깊은 복사. 전부 참조관계가 끊긴다.
+const monster2 = monsterList[0] // monster2 객체를 대입하여 참조하는 개념. 좌변 또는 우변 중 하나의 값이 변하면 나머지 변도 같이 바뀐다.
+monster1.name = '새 몬스터';
+console.log(monsterList[0].name); // 슬라임
+monster2.name = '새 몬스터';
+console.log(monsterList[0].name); // 새 몬스터
+monsterList[0] === monster1; // false
+monsterList[0] === monster2; // true
+//얕은 복사
+//중첩된 객체가 있을 때 바깥 객체만 복사되고 내부 객체는 참조 관계를 유지
+//문자열, 숫자와 같은 값은 복사되지만, 복사한 객체,배열 내부의 배열,객체의 값은 참조가 됨.
+const monster2 = {...monster[0]}; // 객체를 복사할 떄는 {}
+const arr2 = [...arr]; //배열을 복사할 떄는 []
+arr2 = arr.slice();
+arr3 = arr.concat();
+//this
