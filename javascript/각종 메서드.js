@@ -229,15 +229,8 @@ const arr2 = [...arr]; //배열을 복사할 떄는 []
 arr2 = arr.slice();
 arr3 = arr.concat();
 
-<<<<<<< HEAD
-//this
-//객체 내의 this는 자기 자신을 가리킴, 화살표 함수가 아닌 function일떄만 자기 자신을 가리킴
-//기본적으로 this는 window 객체를 가리킴.
-//객체.메서드를 해야지만 this는 자기 자신이 된다.  
-=======
 // this
 // 기본 적으로 window를 가르킨다. 하지만 객체 내에서는 객체를 가르킨다.
 // 하지만 객채 내에서 무조건 this===객체가 아니라 객체.메서드() 형태로 작성해야지만 this는 속한 객체를 가르킨다.
 // 객체 내에서 this를 사용하고 싶을 경우, 화살표 함수가 아닌 function 함수를 사용해야 함.
 // 화살표 함수를 쓰면 this는 window를 가르킴.
->>>>>>> refs/remotes/origin/main
