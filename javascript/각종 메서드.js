@@ -228,3 +228,9 @@ const monster2 = { ...monster[0] }; // 객체를 복사할 떄는 {}
 const arr2 = [...arr]; //배열을 복사할 떄는 []
 arr2 = arr.slice();
 arr3 = arr.concat();
+
+// this
+// 기본 적으로 window를 가르킨다. 하지만 객체 내에서는 객체를 가르킨다.
+// 하지만 객채 내에서 무조건 this===객체가 아니라 객체.메서드() 형태로 작성해야지만 this는 속한 객체를 가르킨다.
+// 객체 내에서 this를 사용하고 싶을 경우, 화살표 함수가 아닌 function 함수를 사용해야 함.
+// 화살표 함수를 쓰면 this는 window를 가르킴.
