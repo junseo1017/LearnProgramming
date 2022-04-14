@@ -209,4 +209,8 @@ const monster2 = {...monster[0]}; // 객체를 복사할 떄는 {}
 const arr2 = [...arr]; //배열을 복사할 떄는 []
 arr2 = arr.slice();
 arr3 = arr.concat();
+
 //this
+//객체 내의 this는 자기 자신을 가리킴, 화살표 함수가 아닌 function일떄만 자기 자신을 가리킴
+//기본적으로 this는 window 객체를 가리킴.
+//객체.메서드를 해야지만 this는 자기 자신이 된다.  
