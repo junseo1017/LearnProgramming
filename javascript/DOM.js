@@ -28,8 +28,9 @@
   // nodeName(이름), nodeValue(값), nodeType(타입)
   // nodeType : 노드 타입 프로퍼티 값은 텍스트가 아닌 숫자로 표현됨.
   
-
   // 이벤트 타입
   // 폼, 키보드, 마우스, HTML DOM, Window 객체
   // 이벤트 핸들러 : 이벤트가 발생했을 때 처리를 담당하는 함수, 지정된 이벤트가 발생하면 웹 브라우저는 그 요소에 등록된 이벤트 핸들러를 실행시킴.
-  
+
+  // xxx.previousElementSibling 이전 형제 요소
+  // xxx.nextElementSibling 다음 형제 요소
