@@ -26,6 +26,8 @@ p.then((message)=>{ // 성공시 리턴값이 then의 매개변수
 const a = false;
 const b = false;
 
+
+
 function testFunction(callback,errorCallback){
   if(a){
     errorCallback({
@@ -44,8 +46,8 @@ function testFunction(callback,errorCallback){
     }
   }
   
-  testFunction((testFunctionReturn) =>{
-    console.log(testFunctionReturn)
+  testFunction((c) => {
+    console.log(c)
   }, (error) => {
     console.log(error.name+error.message)
   })
