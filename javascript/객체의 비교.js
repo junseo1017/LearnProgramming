@@ -29,3 +29,4 @@ const junseo = {
 };
 junseo.name.last; // 실행결과 >> '이'
 junseo["name"]["last"]; // 실행결과 >> '이'
+
