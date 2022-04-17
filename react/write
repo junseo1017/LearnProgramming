@@ -1,0 +1,2 @@
+JSX >
+- class 부여하고 싶을 때는 class 대신 className을 씀
