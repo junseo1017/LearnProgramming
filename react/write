@@ -1,2 +1,12 @@
 JSX >
 - class 부여하고 싶을 때는 class 대신 className을 씀
+
+리액트는 컴포넌트를 렌더링할 root가 필요하다 (빈 div태그 등)
+
+render() {
+    생성한태그('태그명',{ onClick:()=>{console.log('clicked')}}(HTML속성 객체 형식으로 표현),'태그 안의 value')
+}
+
+State(상태)는 바뀔 여지가 있는 부분이다
+
+클래스 하나가 컴포넌트 하나
