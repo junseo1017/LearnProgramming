@@ -1,5 +1,5 @@
-//
 const path = require('path'); // 경로 조작 // nodejs 깔려있으면 알아서 path깔아져있음
+const webpack = require('webpack');
 module.exports = {
   name: 'wordrelay-setting',
   mode: 'development', // 실서비스 : production
@@ -20,13 +20,23 @@ module.exports = {
         loader: 'babel-loader', // 최신문법과 호환되게 바꿔주겠다는 의미
         options: {
           //바벨의 옵션
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+          presets: [
+            // plugin의 모음
+            '@babel/preset-env',
+            // {
+            //   targets: {
+            //     browsers: ['> 5% in KR'], // 지원하는 브라우저 한국에서 5%점유율까지;
+            //   },
+            //   debug: true,
+            // },
+            '@babel/preset-react',
+          ],
           plugins: ['@babel/plugin-proposal-class-properties'],
         },
       },
     ],
   }, //entry 파일 적용 module로 연결해서 output으로 뺀다는 느낌
-
+  plugins: [new webpack.LoaderOptionsPlugin({debug: true})],
   output: {
     path: path.join(__dirname, 'dist'), // nodejs를 사용하여 폴더 지정 // path.join 경로를 알아서 설정해줌 dirname 현재 폴더 안에 있는 dist 폴더를 설정
     filename: 'app.js',
