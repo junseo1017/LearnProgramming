@@ -14,10 +14,10 @@
 // oject 자료형으로 만든 스타일을 작성해야함
 // font-size와 같은 기호는 사용하지 않고 camelCase 작명 방식을 사용
 function App() {
-  return <div style={{ color: 'red', fontSize: '30px' }}>hi</div>;
+  return <div style={{color: 'red', fontSize: '30px'}}>hi</div>;
 }
 // 보통은 직접 스타일을 작성하지 않고 변수명으로 묶어서 사용
-let post = { color: 'red', fontSize: '30px' };
+let post = {color: 'red', fontSize: '30px'};
 function App() {
   return <div style={post}>hi</div>;
 }
@@ -31,7 +31,7 @@ function App() {
 // useState는 항상 2개인 배열이 생성됨.
 // 이를 활용해 구조할당분배를 적용하여 test라는 변수에 값을 저장하는 방식
 // useState 내에는 문자,숫자,배열,객체 모두 저장 가능.
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 function App() {
   let [test, fixText] = useState('테스트');
   let [test2, fixText2] = useState('테스트');
