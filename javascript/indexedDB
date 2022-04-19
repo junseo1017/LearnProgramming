@@ -26,3 +26,69 @@ IndexedDB는 : 브라우저 기반 내장 데이터베이스 JS 관련 애플리
     - localStorage에 비해 훨씬 많은 데이터 저장 가능
 > Index를 지원하기 때문에 많은 양의 구조화된 데이터를 다룰 때 적합
 
+작업 순서
+1. 데이터베이스 열기
+    - 첫번째 버전 데이터베이스 게시(IndexedDB 데이터베이스 수정 시 version을 수정해야 함) 
+    - let initializeDb = IndexedDB.open(name, version) // name = 문자열, 데이터베이스 이름 // verison = 양의 정수 버전 1
+2. 데이터베이스 ObjectStore 생성
+    - ObjectStore 데이터를 담는 공간 / 여러개가 있을 수 있지만 ObjectStore이름은 고유해야 함.
+    - ObjectStore 생성 방법 3가지
+        - datebase.createObjectStore('store name',{keyPath:'id'}) // 사용자의 아이디가 KEY 역할을 해줌 // key generator를 만들어서 연속된 숫자를 각 객체에 저장
+        - datebase.createObjectStore('store name',{autoIncrement:true}) // key generator를 만들어서 연속된 숫자를 객체와 상관없이 따로 저장
+        - database.createObjectStore('store name',{keyPath:'id', autoIncrement:true}) // key generator를 만들어서 연속된 숫자를 객체id라는 속성에 저장 // 특정한 key에 해당하는 값을 모두 인덱싱할 때 사용
+        - initializeDb.onupgradeneed = () =>{
+            const database = initializeDb.result
+            const objectStore = database.createObjectStore('store name'.{keyPath:'id'})
+        }
+        - const usersStore = database.createObjectStore('users',{keyPath:'id'}) 
+            - createObjectStore(tableName) 함수를 이용하여 usersStore라는 이름으로 ObjectStore를 생성하고 users라는 테이블을 만듦
+            - usersStore 저장소에 users라는 테이블이 생성됨.
+            - {keyPath:'id'}로 'id'를 제공하는 데 필요한 인덱스 필드의 이름을 지정
+3. Transaction 시작 - 데이터 추가, 검색 작업 요청(데이터를 어떻게 넣고 빼는지)
+    - 객체 지향이기 때문에 objectStore 이름을 명시해서 넣어줘야 함.
+    - const transaction = database.transaction('objectStore Name', 'Transaction Mode')
+        - transaction mode : readonly, readwrite, versionchange
+            readwrite : 이미 존재하는 ObjectStore의 데이터를 읽고 다시 쓸 때
+    - objectStore 데이터 추가하기
+        const todos = database.createObjectStore('todos',{autoIncrement:true})
+        functino addTodos(){
+            const todo = {
+                title:'todo1',
+                text:'no.1 thing to do'
+            }
+        }
+        const transaction = database. transaction('todos','readwrtie') 
+            // todos ObjectStore에 readwrite 권한으로 transaction 시작하기
+        const todos = transaction.objectStore('todos')
+            // ObjectStore()함수로 todos 테이블 선택
+        todos.add(todo)
+            // 원하는 객체(todo)를 테이블에 추가
+            // return transaction.complete
+    - 데이터 읽기
+        - store.get() // store.getAll()
+    - 데이터 수정
+        - 추가와 같으나 마지막에 add가 아닌 put으로 진행
+    - 데이터 삭제
+        - delete 명령으로 진행
+4. index마다 DOM 이벤트 수신해서 작업
+5. 결과 수행
+
+ 
+
+ IndexedDB 특징
+많은 양의 구조화된 데이터를 클라이언트에 저장할 수 있다.
+Javascript 기반의 객체지향 데이터베이스이다. (즉, Javascript가 인식할 수 있는 자료형과 객체를 저장할 수 있습니다)
+Key-Value 데이터베이스이다.
+
+IndexedDB 사용 패턴 💡
+데이터베이스를 열고
+객체 저장소(Object store)를 생성
+트랜잭션(Transaction)을 시작하고 데이터베이스 작업(데이터 읽기/추가 등)을 요청
+DOM EventListner를 사용하여 요청이 완료될때가지 기다리고 결과를 확인
+
+ObjectStore란❓
+IndexedDB의 데이터를 담는 공간
+모든 유형의 값을 키-값 또는 여러개의 키-값으로 저장 가능
+여러개의 레코드(key-value) 관련 쿼리 지원
+IndexedDB는 value 내의 특정 객체를 Index로 지정한 뒤, Index로 원하는 value를 검색할 수 있습니다.
+localStorage와 비교해 더 많은 양의 데이터 저장 가능

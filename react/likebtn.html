@@ -11,10 +11,15 @@
         state = {
           number: 0,
         };
+
         onClick = () => {
-          let saveNumber = this.state.number;
-          this.setState({number: saveNumber + 1});
+          this.setState((prevState) => {
+            return {
+              number: prevState.number + 1,
+            };
+          });
         };
+
         render() {
           return <button onClick={this.onClick}>Like {this.state.number}</button>;
         }

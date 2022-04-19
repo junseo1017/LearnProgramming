@@ -1,0 +1,16 @@
+웹팩을 쓰는 이유
+html 하나만 있어도 자바스크립트를 쓸 수 있다. 하지만 실무에서는 컴포넌트 하나만 쓰는 경우는 없다.
+여러개의 자바스크립트 파일을 하나의 파일로 만들어준다.
+
+export import로 다양한 js,jsx 파일을 불러올 수 있어도 결국 react index.html에는 한가지 소스(app.js)만 연결할 수 있기 때문에 여러 파일을 묶어줄 수 있는 웹팩이 사용된다.
+
+웹팩 세팅
+1) npm init (npm 시작)
+2) npm i react react-dom < react/react-dom npm에게 react랑 react-dom을 설치하라고 명령
+3) npm i -D webpack webpack-cli < 설치 명령 -D은 developer용  
+4) webpack.config.js 파일에 여러 모듈 추가한 뒤 (입,출력파일 설정 중요) npx webpack 또는 package.json 스크립트 속성에 추가한다.
+5) 바벨을 깔고 jsx 읽을 수 있게 설정 npm i -D 
+    @babel/core
+    @babel/preset-evn(최신 문법을 옛날 문접을 지원하게 바꿔줌)
+    @babel/preset-react(jsx 지원)
+    @babel/preset-loader(바벨이랑 웹팩을 연결)

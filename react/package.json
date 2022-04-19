@@ -1,0 +1,28 @@
+{
+  "name": "wp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "react.js",
+  "dependencies": {
+    "@types/react-dom": "^17.0.14",
+    "js-tokens": "^4.0.0",
+    "loose-envify": "^1.4.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "scheduler": "^0.21.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "junseo",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
