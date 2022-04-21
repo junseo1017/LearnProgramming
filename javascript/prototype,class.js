@@ -29,6 +29,8 @@ class Monster {
   }
 }
 
+
+
 const monster1 = new Monster('슬라임', 25, 10, 10);
 const monster2 = new Monster('오크', 25, 10, 10);
 
