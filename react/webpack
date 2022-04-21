@@ -11,7 +11,19 @@ export import로 다양한 js,jsx 파일을 불러올 수 있어도 결국 react
 4) webpack.config.js 파일에 여러 모듈 추가한 뒤 (입,출력파일 설정 중요) npx webpack 또는 package.json 스크립트 속성에 추가한다.
 5) 바벨을 깔고 jsx 읽을 수 있게 설정 npm i -D 
     @babel/core
-    @babel/preset-evn(최신 문법을 옛날 문접을 지원하게 바꿔줌)
+    @babel/preset-env(최신 문법을 옛날 문접을 지원하게 바꿔줌)
     @babel/preset-react(jsx 지원)
-    @babel/preset-loader(바벨이랑 웹팩을 연결)
+    babel-loader(바벨이랑 웹팩을 연결)
     @babel/plugin-proposal-class-properties
+
+6) react-refresh / @pmmmwh/react-refresh-webpack-plugin -D
+
+plugins : [] 
+- 확장프로그램의 개념
+- new webpakc.LoaderOptionsPlugin({debug:ture}), > 
+
+npm init
+npm i react react-dom
+npm i -D webpack webpack-cli webpack-dev-server
+npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader @babel/plugin-proposal-class-properties
+npm i -D react-refresh @pmmmwh/react-refresh-webpack-plugin
