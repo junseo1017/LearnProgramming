@@ -4,31 +4,51 @@
     <!--리액트가 동작할 수 있게 해주는 핵심 적인 소스-->
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <!--위 소스를 자바스크립트로 연결해줌-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!--자바스크립트에서 html 문법을 지원하게 해주는 바벨을 연결-->
   </head>
   <body>
     <div id="root"></div>
-    <script>
+    <script type="text/babel">
       const e = React.createElement; // 태그 생성
       class LikeButton extends React.Component {
         // extend 상속
         constructor(props) {
-          // 기본 문법
-          super(props); // 기본 문법
-          this.state ={
-            liked:false,
+          // 기본 문법 / 없어도 됨
+          super(props); // 기본 문법 / 없어도 됨
+          this.state = {
+            // this 없어도 됨
+            liked: false,
           };
         }
-        render(){
-          return button
-        }
         render() {
-          return e('button',{onClick: () => {this.setState({liked:true})},type:'submit'},
-          this.state.liked === true ? 'Liked' : 'Like'); // 어떻게 화면에 표시할 것인지 
-        }
+          return (
+            <button
+              type='submit'
+              onClick={() => {
+                this.setState({liked: true});
+              }}>
+              {this.state.liked === true ? 'Liked' : 'Like'}
+            </button>
+          );
+        } // JSX : JavaScript+XML
+        // render() {
+        //   return e('button',{onClick: () => {this.setState({liked:true})},type:'submit'},
+        //   this.state.liked === true ? 'Liked' : 'Like'); // 어떻게 화면에 표시할 것인지
+        // }
       }
     </script>
-    <script>
-      ReactDOM.render(e(LikeButton), document.querySelector('#root')); // ReactDOM 화면에 보여주는 역할 // 지정된 위치에 추가
+    <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <LikeButton />
+          <LikeButton />
+          <LikeButton />
+          <LikeButton />
+        </div>,
+        document.querySelector('#root')
+      );
+      // ReactDOM.render(e(LikeButton), document.querySelector('#root')); // ReactDOM 화면에 보여주는 역할 // 지정된 위치에 추가
     </script>
   </body>
 </html>

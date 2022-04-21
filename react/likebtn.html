@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class LikeButton extends React.Component {
+        state = {
+          number: 0,
+        };
+
+        onClick = () => {
+          this.setState((prevState) => {
+            return {
+              number: prevState.number + 1,
+            };
+          });
+        };
+
+        render() {
+          return <button onClick={this.onClick}>Like {this.state.number}</button>;
+        }
+      }
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<LikeButton />, document.querySelector('#root'));
+    </script>
+  </body>
+</html>
