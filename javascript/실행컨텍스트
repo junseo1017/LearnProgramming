@@ -20,8 +20,14 @@
  - 함수 호출 : 직접 호출 ex) myFunc();
  - 메서드 호출 : 객체의 메서드를 호출 o.method()
  - 생성자 호출 : 생성자 함수를 호출 const P = new Person();
- - 간접 호출 - call,apply 등으로 함수를 간접 호출 myFunc.call(null,a);
+ - 간접 호출 : call,apply 등으로 함수를 간접 호출 myFunc.call(null,a);
+  - call,apply : function객체의 메서드/ this로 사용될 객체를 명시적으로 지정할 수 있음. 
+ - 콜백 함수
+  - ex) setTimeout에서의 콜백 함수는 전역 함수로 함수의 실행 환경을 바꾼다. 
 
+Dynamic binding : this가 환경에 따라 바뀌는 것.
+화살표 함수 : 함수가 생성된 환경
+일반 함수 : 함수가 호출된 환경 
 
 
 

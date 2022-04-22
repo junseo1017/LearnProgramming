@@ -51,15 +51,15 @@ class Monster {
 // prototype
 // 프로토타입은 유전자라고 이해하면 편함.
 // 부모 함수
-function a() {
+function A() {
   this.name = 'kim';
   this.height = '170';
 }
 // 자식 함수 // 위 생성자 함수와 동일
-const b = new a();
+const b = new A();
 
 // 부모 유전자에 새로운 속성을 부여
-a.prototype.hobby = 'movie';
+A.prototype.hobby = 'movie';
 
 // 자식 함수에 값을 직접 추가하지 않아도 자식 함수에서 속성이 추가됨
 // 하지만 부모 함수에 추가한게 아니라 부모 함수의 유전자에 추가한 것이기 때문에 부모 함수는 프로토타입으로 추가된 속성값을 가지지 않음.th

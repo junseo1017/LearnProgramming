@@ -26,3 +26,4 @@ function createCard() {
 const card1 = createCard();
 card1.changeTitle('생일');
 card1.changeContent('축하');
+card1.print();

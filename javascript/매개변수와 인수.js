@@ -37,13 +37,3 @@ function a(parameter) {
      return (x-y)*a;
  }
  console.log(a(5,3));
-
-
-
-a = () =>{
-return b = () =>{}
-}
-
-c= () =>{
-  b();
-}
