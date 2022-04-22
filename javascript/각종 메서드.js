@@ -248,3 +248,15 @@ arr3 = arr.concat();
 // cur 현재 요소
 // 초기값을 따로 설정하지 않으면 첫 번째 요소를 초기값으로 사용함.
 // reduce는 기존 배열을 변형시킴.
+// 아래와 같이 객체로도 합칠 수 있다.
+arr = ['a','b','c','g']
+arr.reduce((map,char) =>{
+  if(!map[char]) map[char]=0
+  map[char]++
+  return map
+  },{})
+{a: 1, b: 1, c: 1, g: 1}
+a: 1
+b: 1
+c: 1
+g: 1
