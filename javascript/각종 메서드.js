@@ -229,13 +229,15 @@ const arr2 = [...arr]; //배열을 복사할 떄는 []
 arr2 = arr.slice();
 arr3 = arr.concat();
 
+
+
 // this
 // 기본 적으로 window를 가르킨다. 하지만 객체 내에서는 객체를 가르킨다.
 // 하지만 객채 내에서 무조건 this===객체가 아니라 객체.메서드() 형태로 작성해야지만 this는 속한 객체를 가르킨다.
-// addEventListener 내의 this는 무조건 이벤트 대상이다.
-// 객체 내에서 this를 사용하고 싶을 경우, 화살표 함수가 아닌 function 함수를 사용해야 함.
-// 화살표 함수를 쓰면 this는 바로 바깥쪽의 this를 가리킴.
-// 
+// addEventListener 내의 this는 이벤트 대상(tag)이다.
+// 객체를 가르키는 this를 사용하고 싶을 경우, 화살표 함수가 아닌 function 함수를 사용해야 함.
+// 화살표 함수를 쓰면 this는 함수 내부가 아닌 함수가 속한 환경을 가리킴.
+
 
 
 // new

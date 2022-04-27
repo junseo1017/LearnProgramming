@@ -1,0 +1,27 @@
+<script>
+  class Human {
+    constructor(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    sayName() {
+      console.log(this.name);
+    }
+    sayAge() {
+      console.log(this.age);
+    }
+  }
+
+  class Developer extends Human {
+    constructor(name, age, skills) {
+      super(name, age);
+      this.skills = skills;
+    }
+    write() {
+      console.log(this.skill);
+    }
+  }
+
+  const junseo = new Developer('준서', 28, ['js', 'html', 'css']);
+  junseo.write();
+</script>

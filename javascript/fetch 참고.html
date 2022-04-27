@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>json 읽기</title>
+    <style>
+      .container {
+        height: 100vh;
+        max-width: 600px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .item {
+        max-width: 300px;
+      }
+
+      .label {
+        width: 4rem;
+        display: block;
+      }
+
+      ol {
+        float: left;
+        padding: 0 1rem 0 0;
+      }
+
+      li {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">
+        <h3>json 데이터 활용하기</h3>
+        <form>
+          <label class="label"
+            >색
+            <input type="text" id="inputColor" placeholder="red" />
+          </label>
+          <br />
+          <button id="buttonSubmit">클릭</button>
+          <h3 id="hexaCode"></h3>
+        </form>
+      </div>
+    </div>
+    <script>
+      // 자유롭게 코드를 작성하여, 예시 화면이 구현되도록 해 보세요.
+      const form = document.querySelector('form');
+      const input = document.querySelector('#inputColor');
+      const color = document.querySelector('#hexaCode');
+      function hexaCode(e) {
+        e.preventDefault();
+        fetch('./data.json')
+          .then((res) => res.json())
+          .then((data) => {
+            const findColor = data.find((v) => v.color === input.value).value;
+
+            color.innerHTML = findColor;
+          });
+      }
+      form.addEventListener('submit', hexaCode);
+    </script>
+  </body>
+</html>
+
+<!-- const a = fetch('./data.json')
+        .then((res) => res.json())
+        .then((data) => data)
+
+
+위와 같은 상황에서 a는 promise 객체가 되는 건 확인했습니다.
+a.name(data 내부의 key값)이렇게 직접 써볼 수 있나해서 then에서 data => return data를 하면 error가 발생합니다. 혹시 error가 발생하는 이유 혹은 a.(key값)을 다룰 수 있는 방법은 없는지 궁금합니다. -->
