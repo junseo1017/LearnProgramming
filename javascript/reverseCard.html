@@ -98,10 +98,12 @@
 
           return;
         }
+        clickable = false;
         setTimeout(() => {
           clicked[0].classList.remove('flipped');
           clicked[1].classList.remove('flipped');
           clicked = [];
+          clickable = true;
         }, 500);
       }
       function startGame() {

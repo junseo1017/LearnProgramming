@@ -1,0 +1,98 @@
+HTTP(Hypertext Transfer Protocol)
+- Web에서 서버와 클라이언트 간의 통신하는 방법을 정한 것
+- 클라이언트는 웹 브라우저 등 서버로 요청을 보내는 대상
+- 서버는 클라이언트가 요청을 보내기 전까지 대응하지 않음.
+- 서버와 클라이언트 사이에는 무수히 많은 요소가 존재.
+- HTTP는 이런 존재들 사이의 통신 방법을 규정
+
+
+HTTP의 경우 클라이언트, 서버가 HTTP로 통신하는 방법
+
+HTTP는 OSI 7계층에 ㅅ ㅗㄱ하는 통신방법중 하나
+서버와 클라이언트 간에 존재하는 여러 통신방법중 하나
+
+클라이언트가 통신을 하고 그 사이에는 프록시 디앤에스 터널 코어네트워크(SK,KT 통신사들이 제공하는 통신망을 통해 라우터 들이 많이 존재함 라우터들이 목적ㅇ지에 기반해서 요청을 리다이렉트하는 것)
+
+HTTP 메세지
+- HTTP라는 통신 규약에서 정한 메세지의 모양새
+- 서버 주소, 요청 메서드 ,상태 코드 , TARGET PATH, 헤더 정보, 바디 정보등이 포함
+- 요청 메시지, 응답 메시지의 모양이 다름
+- http/1.1 메시지는 사람이 읽을 수 있음. 
+
+
+http 헤더
+- 컨텐츠 관련 정보, 인증 관련 정보, 쿠키 정보, 캐시 관련 정보 등, 서버와 클라이언트 간 통신 시 필요한 정보를 담는다.
+- 클라이언트 요청 시 서버 응답 시 모두 헤더에 정보를 담을 수 있다. 
+
+http status
+- 클라이언트 요청 결과의 상태 정보를 얻는다.
+- 200,400,500등 숫자 코드와 ok,not found 등의 텍스트로 이루어짐
+- 코드를 이용해 각 결과에 해당하는 행위를 알 수 있음. 
+
+요청 메서드
+- http에서 클라이언트는 서버로 요청을 보낸다.
+- 요청 시 요청 메서드로 특정 요청에 대한 동작을 정의한다.
+- GET, POST, PUT, PATH, DELETE, OPTIONS, CONNECT, TRACE
+- 이러한 통신에 대한 의미부여는 서버구현에 직접적인 영향을 미치지 않음 단순히 통신규약일 뿐이고 이것을 활용하는 것은 개발자의 몫
+
+
+
+REST API(Representational State Transfer API)
+- API(Application Programming Interface)는 사용자가 특정 기능을 사용할 수 있도록 제공하는 함수를 의미함.
+- REST API는 http의 요청 메서드에 응하는 서버 API와 클라이언트 간 통신의 구조가 지켜야 할 좋은 방법을 명시한 것이다.
+- 요청 메서드의 의미, URI 설계, 클라이언트의 상태에 대한 동작 등을 정의함. 
+
+Fetch API
+- XMLHTTPRequest를 대체하는 HTTP요청 API.
+- ES6에 추가된 Promise를 리턴하도록 정의됨.
+- 네트워크 요청 성공 시 Promise는 Response 객체를 resolve한다.
+- 네트워크 요청 실패 시 promise는 에러를 reject한다.
+
+response 객체 : 결과에 대한 다양한 정보를 담음 
+- response.ok는 http status code가 200-299 사이면 true, 그 외 false이다. 
+- response.status는 HTTP status code를 담는다.
+- response.url은 요청한 url 정보를 담는다. 
+ex code.
+fetch(serverURL)
+.then(response=>{
+    response.ok
+    response.status
+    response.url
+    .
+    .
+}
+
+
+Header
+- response.headers로 response객체의 헤더 정보를 얻을 수 있음.
+- 
+fetch(url)
+.then(res => {
+    for(let[k,v] of res.headers){
+        console.log(k,v)
+    }
+}) 
+
+body 
+- response.json() 메서드로 얻은 body 정보를 json으로 만드는 promise를 반환한다.
+- promise resolve 되면 얻어온 body 정보를 읽는다. 
+- response.text(), response.blob(), response.formData() 등의 메서드로 다른 형태의 바디를 읽는다. 
+
+
+post 요청
+- fetch로 fetch 메서드 옵션을 넣는다.
+- method 필드로 여러 요청메서드를 활용한다.
+- headers,body 필드를 활용해 서버에 추가 정보를 보낸다.
+
+ex.
+fetch(url, {
+    method:'post',
+    headers:{
+        'content-type':
+'application/sjon;charset=utf-8',
+    Authentication : 'mysecret'
+ },
+ body: JSON.stringify(formData)
+})
+.then(res => response.json())
+.then(json => console.log('post 요청 결과', json))
