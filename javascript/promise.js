@@ -15,10 +15,10 @@ let p = new Promise((resolve, reject) => {
   }
 });
 
-p.then(message => {
+p.then((message) => {
   // 성공시 리턴값이 then의 매개변수
   console.log(message);
-}).catch(message => {
+}).catch((message) => {
   // 실패시 리턴값이 catch의 매개변수
   console.log(message);
 });
@@ -44,17 +44,22 @@ function testFunction(callback, errorCallback) {
 }
 
 testFunction(
-  c => {
+  (c) => {
     console.log(c);
   },
-  error => {
+  (error) => {
     console.log(error.name + error.message);
   }
 );
 
+<<<<<<< HEAD:javascript/promise,await,async.js
 Promise.all;
 Promise.race;
 
 
 
 // 
+=======
+Promise.all; // 프로미스를 모두 실행시키고 제일 마지막으로 실행된 것에서 실행
+Promise.race; // 제일 빨리 실행된 것부터 실행
+>>>>>>> refs/remotes/origin/main:javascript/promise.js

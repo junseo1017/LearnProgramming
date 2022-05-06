@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // async & await
+      // 1. async 사용법
+      function fetchUser() {
+        // 네트워크 통신을 해서 10초 정도 걸리는 작업이 있다고 가정
+        return 'junseo';
+      }
+      const user = fetchUser();
+      console.log(user);
+      // 이렇게 했을 때 비동기적 처리를 하지 않을 경우, 10초 뒤에 console.log(user)이 실행되는 상황이 발생함.
+      // 오래걸리는 작업은 비동기적 처리 필요
+      ////////////////////////////////////////////////////////////////////////////
+      // Promise / then 형태
+      function fetchUser() {
+        return new Promise((resolve, reject) => {
+          resolve('junseo');
+        });
+      }
+      const user2 = fetchUser();
+      user2.then(console.log);
+      console.log(user2);
+      ////////////////////////////////////////////////////////////////////////////
+      // async
+      async function fetchUser() {
+        return new Promise((resolve, reject) => {
+          return 'junseo';
+        });
+      }
+      const user3 = fetchUser();
+      user3.then(console.log);
+      ////////////////////////////////////////////////////////////////////////////
+      // await
+      // async가 붙은 함수 안에서만 쓸 수 있음.
+      // await 뒤의 함수의 실행이 완료되면 다음 문장 실행
+      // 내가 이해한 바로는 동기적'처럼'보인다고 했으니까 다른 함수는 실행하고
+      function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function getApple() {
+        await delay(1000);
+        throw 'error'; // 에러 발생시키는 api
+        return 'apple';
+      }
+
+      async function getBanana() {
+        await delay(1000);
+        return 'banana';
+      }
+
+        // function pickFruits() {
+        //   return getApple().then((apple) => {
+        //     return getBanana().then((banana) => `${apple}+${banana}`);
+        //   });
+        // }
+      아래식은 순서대로 식이 돼서 비효율임
+        async function pickFruits() {
+          const apple = await getApple(); 1초
+          const banana = await getBanana(); + 1초
+          return `${apple}+${banana}`;
+        }
+      async function pickFruits() {
+        // 아래 식처럼 각자 식이 연결되어있지 않은 경우 프로미스를 바로 생성하고 비동기적으로 실행하고 await으로 실행 시키기.
+        //
+        const applePromise = getApple();
+        const bananaPromise = getBanana();
+        const apple = await getApple();
+        const banana = await getBanana();
+        return `${apple}+${banana}`;
+      }
+      // 하지만 위처럼 식을 작성하지 않음
+      function pickFruits() {
+        return Promise.all([getApple(), getBanan()]).then((fruits) => fruits.join(' + '));
+      }
+
+      function pickOnlyOne() {
+        return Promise.race([getApple()], getBanana());
+      }
+      pickOnlyOne().then(console.log);
+    </script>
+  </body>
+</html>
