@@ -119,3 +119,4 @@ interface Props {
 }
 const obj: Props = {a: 5};
 const obj2: Required<Props> = {a: 5};
+// error b property도 설정해 줘야함

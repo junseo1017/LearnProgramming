@@ -39,6 +39,10 @@ funcA(1)
     console.error(err);
   });
 
+
+
+
+
 // worker_threads
 // 노드에서 멀티 스레드를 사용하는 경우는 극히 드묾(암호화, 압축 등)
 // 대부분의 경우 싱글 스레드로 생각해야 됨.
@@ -97,5 +101,5 @@ if (isMainThread) {
   worker.on('exit', () => console.log('워커 종료'));
 } else {
   const data = workerData; // 위에서 설정한 초기데이터는 workerData를 통해 받아올 수 있음
-  pparentPort.postMessage(data.start + 100);
+  pparentPort.postMessage(data.start + 100); // 구체적인 작업 실행
 }
