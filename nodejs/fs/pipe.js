@@ -9,5 +9,7 @@ const fs = require('fs');
 const zlib = require('zlib');
 const readStream = fs.createReadStream('./readme.txt', {highWaterMark: 16});
 const zlibStream = zlib.createGzip();
-const writeStream = fs.createWriteStream('./lorem.txt'); //
-readStream.pipe(zlibStream).pipe(writeStream);
+const writeStream = fs.createWriteStream('./lorem.txt'); 
+readStream.pipe(zlibStream).pipe(writeStream); // 파이프를 연결
+
+

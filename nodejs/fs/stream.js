@@ -18,7 +18,8 @@ readStream.on('error', (err) => {
 // stream은 효율성도 있지만 안정성에도 좋다. 4gb 파일에 버퍼방식을 적용한다면 서버 메모리도 4gb가 되어야 하고 메모리가 견디지 못하면 서버가 터지지만 stream은 데이터를 잘게 나눠서 처리할 수 있기 때문이다.
 // hignWaterMark로 나눠서 처리하는 양을 조절할 수 있다.
 
-// 읽는거 말고 수정할 때
+// 데이터 읽는거 말고 작성할 때
+// 나눠서 데이터를 보낼 수 있어서 메모리를 효율적으로 사용할 수 있다. 
 const fs = require('fs');
 const writeStream = fs.createWriteStream('./lorem.txt');
 writeStream.on('finish', () => {

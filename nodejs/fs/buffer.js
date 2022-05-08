@@ -9,3 +9,5 @@ console.log(Buffer.concat(array).toString()); // this is phrase
 
 // 아무것도 들어있지 않은 5byte짜리 버퍼를 생성하는 것도 가능
 console.log(Buffer.alloc(5)); // <Buffer 00 00 00 00 00>
+
+

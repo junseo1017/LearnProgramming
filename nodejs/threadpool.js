@@ -22,7 +22,6 @@ const EventEmitter = require('events'); // EventEmitter라는 생성자 생성
 const {listeners} = require('process');
 const myEvent = new EventEmitter(); // 나만의 커스텀 이벤트 생성
 myEvent.addListener('event1', () => {
-  //
   console.log('event1');
 });
 myEvent.on('event2', () => {
@@ -46,4 +45,4 @@ myEvent.emit('event1'); // error
 
 myEvent.removeListener('event2', consoleEvent2_2); // 모든 이벤트가 특정 이벤트를 삭제할 수 있음. 변수로 넣어줘야함
 
-console.log(myEvent.listenerCount('event2');
+console.log(myEvent.listenerCount('event2')); // 이벤트에 콜백함수가 몇개 등록되어 있는지 확인

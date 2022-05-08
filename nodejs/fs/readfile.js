@@ -16,7 +16,8 @@ fs.readFile('./readme.txt', (err, data) => {
 
 // fs는 콜백으로 사용할 수 있기 때문에 콜백헬을 방지하기 위해
 // util.promisify를 사용하거나
-// 자체 API인, promises을 활용한ㄷ.
+// 자체 API인, promises을 활용.
+// async,await도 사용할 수 있음.
 const fs = require('fs').promises;
 
 fs.readFile('./readme.txt')
@@ -24,12 +25,5 @@ fs.readFile('./readme.txt')
       console.log(data);
       console.log(data.toString())
     })
-    .catch((err)=>{throw err;})
-    (err, data) => {
+    .catch((err)=>{throw err;});
 
-  if (err) {
-    throw err;
-  }
-  console.log(data);
-  console.log(data.toString());
-});

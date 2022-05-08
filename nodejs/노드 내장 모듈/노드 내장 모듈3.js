@@ -27,4 +27,5 @@ process.stdout.on('data', function (data) {
 process.stderr.on('data', function (data) {
   console.error(data.toString());
 });
-
+// test.py 생성 후 멀티 스레드(또는 실행할 작업)작업 진행
+// spawn.js 실행 (단, 언어가 깔아져 있어야 함.)
