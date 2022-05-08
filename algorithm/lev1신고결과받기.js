@@ -15,7 +15,6 @@ function solution(id_list, report, k) {
     singoham.push(report[i].split(' ')[0]);
     singodangham.push(report[i].split(' ')[1]);
   }
-
   // 중첩 반복문을 통해 신고 횟수가 k에 도달하면 중복신고 변수에 푸쉬
   // count가 정상적으로 작동하지 않음 살펴봐야함.
   let joogboksingo = [];
@@ -23,16 +22,26 @@ function solution(id_list, report, k) {
   for (let i = 0; i < singodangham.length; i++) {
     for (let u = i; u < singodangham.length; u++) {
       if (singodangham[i] === singodangham[u]) {
-        count++;
+        count += 1;
       }
     }
     if (count < k) {
       count = 0;
-    } else if (count >= k) {
-      joogboksingo.push[singodangham[i]];
+    } else if (count >= k || joogboksingo.indexOf(singodangham[i]) === -1) {
+      joogboksingo.push(singodangham[i]);
+      count = 0;
     }
   }
-  console.log(joogboksingo);
+  let result = Array(id_list.length).fill(0);
+  for (let i = 0; i < joogboksingo.length; i++) {
+    for (let u = 0; u < singodangham.length; u++) {
+      if (joogboksingo[i] === singodangham[u]) {
+        let resultIndex = id_list.indexOf(singoham[u]);
+        result[resultIndex] += 1;
+      }
+    }
+  }
+  return result;
 }
 
 // 각 유저는 한 번에 한 명의 유저를 신고할 수 있음.
