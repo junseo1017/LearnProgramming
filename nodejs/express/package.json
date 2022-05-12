@@ -1,0 +1,22 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junseo1017/learnProgramming.git"
+  },
+  "author": "junseo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/junseo1017/learnProgramming/issues"
+  },
+  "homepage": "https://github.com/junseo1017/learnProgramming#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
