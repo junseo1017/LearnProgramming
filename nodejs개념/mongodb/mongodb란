@@ -1,0 +1,135 @@
+mongoDB
+mongo는 Humongous 에서 따온 말로 엄청나게 큰 db라는 의미 > 대용량 데이터를 처리하기 좋게 만들어짐
+
+nosql vs RDB
+RDB(ralational Database)
+관계형 데이터 베이스
+자료들의 관계를 주요하게 다룸
+sql 질의어를 사용하기 위해 데이터를 구조화해야 함
+
+nosql(not only sql)
+구조화된 질의어를 사용하지 않는 데이터베이스
+자료 간의 관계에 초점을 두지 않음
+데이터를 구조화하지 않고, 유연하게 저장함
+
+nosql을 사용하는 이유
+sql을 사용하기 위해서는 데이터를 구조화하는 것이 필수 (DDL)(Data Definition Language)
+> 스키마에 정의된 데이터가 아니면 저장할 수 없는 제약이 따름
+
+nosql을 사용하면 사전작업없이 db를 사용할 수 있음
+> db작업에 크게 관여하지 않고 프로젝트를 빠르게 진행할 수 있음
+
+nosql과 document db
+대표적으로 자료를 document로 저장하는 document db가 일반적.
+이외에 key-value, Graph,large collection 등의 nosql db가 존재
+
+
+mongoDB의 기본 개념
+Database > collection > document
+
+Database
+- 하나 이상의 컬렉션을 가질 수 있는 저장소
+
+collection
+- 하나 이상의 document저장되는 공간
+- sql의 table과 유사
+- 구조를 정의하지 않음
+
+document
+- mongoDB에 저장되는 자료
+- 구조제약없이 유연하게 저장 가능
+- json과 유사한 bson 사용하여 다양한 자료형을 지원
+
+document>objectId
+- 각 document의 유일한 키 값, sql의 primary key와 유사
+- 하나씩 증가하는 값이 아닌 document를 생성할 때 자동으로 생성되는 값
+
+mongoose odm(object data modeling)이란?
+- mongoDB의 collection에 집중하여 관리하도록 도와주는 패키지
+- collection을 모델화하여, 관련 기능들을 쉽게 사용할 수 있도록 도와줌
+
+사용하는 이유
+연결관리
+- mongoDB의 기본 node.js 드라이버는 연결상태를 관리하기 어려움
+- mongoose를 사용하면 간단하게 데이터베이스와의 연결상태를 관리해줌
+
+스키마 관리
+- 스키마를 정의하지 않고 데이터를 사용할 수 있는 것은 nosql의 장점
+- 데이터 형식을 미리 정의해야 코드 작성과 프로젝트 관리에 유용
+- mongoose는 코드레벨에서 스키마를 정의하고 관리할 수 있게 해줌
+
+Populate
+- mongoDB는 기본적으로 join을 제공하지 않음
+- join과 유사한 기능을 사용하기 위해선 aggregate라는 쿼를 사용해야 하지만, mongoose는 Populate를사용하여 간단하게 구현 가능
+
+mongoose ODM 사용 순서
+- 스키마 정의
+>  models> schemas > board.js
+- 모델 만들기
+> models > index.js
+- 데이터베이스 연결
+> index.js
+- 모델 사용
+> 하단
+
+모델 사용하기 -간단한 CRUD
+CREATE - create
+READ - find, findById, findOne
+UPDATE - updataOne, updataMany, findByIdAndUpdate, findOneAndUpdate
+DELETE - deleteOne, deleteMany, findByIdAndDelete, findOneAndDelete
+
+
+Query
+ - MongoDB에도 sql의 where과 유사한 조건절 사용 가능
+ - MongoDB의 QUERY는 BSON형식으로, 기본 문법 그대로 mongoose에서 사용 가능
+
+Query 예제
+Person.find({
+    name:'nice', // exact match name이 'nice' person 데이터
+    age:{
+        $lt:20,
+        $gte:10,
+    },
+    Language:{
+        $in:['ko','en'], // 'ko','en' 둘 중에 하나를 가지고 있는 사람을 찾는다는 의미
+    },
+    // 여기를 기준으로 위 조건은 &&로 묶임
+    $or:[ // $or는 조건을 ||로 묶음
+        {status:'ACTIVE'},
+        {isFresh:true}
+    ],
+});
+- {key:value}로 exact match
+- $lt, $lte, $gt, $gte를 사용하여 range query 작성 가능(less than,less than equal, greater than)
+- $in을 사용하여 다중 값으로 검색
+- $or를 사용하여 다중 조건 검색
+- $in의 경우 mongoose에서 쿼리 값으로 '배열'이 주어지면 자동으로 $in 쿼리를 생성해줌
+
+- 또한 MongoDB에서 Document의 속성 유무를 체크하기 위해 $exists operator를 사용할 수 있음.
+- $exists를 사용하여 속성이 없는지를 확인
+{
+  status: { $exists: false },
+}
+
+
+express.js에 Mongoose ODM 사용하기
+- express.js는 프로젝트 구조를 자유롭게 구성할 수 있기 때문에 어느 부분에 Mongoose ODM을 위치시키면 좋을지 적절한 위치를 결정하는 것이 중요
+- 일반적으로 models 디렉터리에 schema와 model을 같이 위치
+- app 객체는 어플리케이션 시작을 의미하는 부분이므로
+- 해당 부분에 데이터베이스 연결을 명시하는 mongoose.connect를 위치
+
+mongoose ODM 커넥션 이벤트
+- express.js 어플리케이션은 종료되지 않고 동작하기 때문에 계속해서 데이터베이스가 정상적으로 동작하는지를 파악하기 위해 동작 중에 발생하는 데이터베이스 연결 관련 이벤트에 대한 처리를 하는 것이 좋음
+
+mongoose.connect('url');
+mongoose.connection.on('connected',()=>{}) // 연결 완료
+mongoose.connection.on('disconnected',()=>{}) // 연결이 끊김
+mongoose.connection.on('reconnected',()=>{}) // 재연결 완료
+mongoose.connection.on('reconnectedFailed',()=>{}) // 재연결 시도 횟수 초과
+
+
+
+Sequelize ORM(Object Relational Mapping)
+ - MySQL, PostgreSQL 등의 RDBMS를 이용하는 간단한 방법
+ - ODM이 단순히 모델에 집중하여 관리하는 것에 반해,
+ - ORM은 테이블 관계와 쿼리 등의 기능을 더욱 단순화하는 용도로 주로 사용
