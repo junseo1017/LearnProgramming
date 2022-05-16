@@ -30,9 +30,9 @@ app.get(
   (req, res, next) => {
     res.sendFile('index.html');
     if (true) {
-      next('route');
+      next('route'); // route는 같은 객체 내 미들웨어를 건너뛰고 다음 미들웨어로 간다
     } else {
-      next();
+      next(); // 같은 객체 내의 다음 미들웨어로 간다. 
     }
   },
   (req, res) => {

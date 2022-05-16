@@ -1,3 +1,5 @@
+// 스키마 정의하기
+
 const {Schema} = require('mongoose'); // 스키마를 사용하기 위해 mongoose에서 schema 클래스를 가져옴
 const PostSchema = new Schema( // 스키마 객체 선언
   {

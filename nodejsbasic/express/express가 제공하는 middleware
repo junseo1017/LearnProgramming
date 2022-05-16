@@ -1,0 +1,63 @@
+morgan(요청과 응답을 기록하는 라우터(미들웨어))
+app.use(morgan('dev'));
+GET / 404 2.000ms -9
+http method
+요청 경로
+응답 코드
+응답 시간
+응답 용량 
+순으로 확인 가능
+app.use(morgan('combined')); 더 자세한 정도를 남겨줌
+
+
+바디파서 < 현재는 안쓰이고 아래 두개로 대체됨.
+아래 두개의 차이
+app.use(express.json());  클라이언트에서 json 데이터로 요청을 보냈을 때 그 데이터를 파싱해서 req.body로 넣어줌
+app.use(express.urlencoded({extended: true})); 폼 보낼 때 클라이언트에서 폼서브밋할 때 기본적으로 urlencoded임. 폼을 파싱해줌 extended true는 폼 파싱할 떄 쿼리스트링을 어떻게 처리할 것인지 true는 qs라는 모듈을 사용함.
+; 폼데이터 보낼 때 이미지같은거 보낼 때 있음 이미지나 파일 urlencoded가 처리 못함 그럴땐 멀터 써야됨 
+
+
+static 미들웨어
+// 정적인 파일들을 제공하는 미들웨어
+// 파일이 있을 때 fs.readFile로 직접 읽을 필요 없음
+// 요청하는 파일이 없으면 알아서 next를 호출해서 다음 미들웨어로 넘어감
+// 파일을 발견했다면 다음 미들웨어 실행 안됨
+//static
+app.use('요청경로', express.static(path.join('실제경로')));
+// 아래 예시
+app.use('/', express.static(path.join(__dirname, 'public-3030')));
+
+- 어떤 사람이 요청경로를 naver.com/nice/good.html을 요청했는데 실제로는 naver.com/great/good.html에 들어있는 파일을 제공할 수 있음.
+- 요청 경로와 실제 경로가 다르기 때문에 보안에 좋음.
+
+
+미들웨어간에도 순서가 중요함
+app.use(morgan('dev')); // 무조건 실행
+app.use('/', express.static(path.join(__dirname, 'public'))); // static의 경우 실제경로에서 파일을 반환하면 next가 실행되지 않음, 하지만 다른 내장 미들웨어의 경우 대부분 next가 실행됨. 그래서 정적 파일만 건네주면 되는 static을 하단에 두면 성능 저하가 발생함 위쪽에 두기  
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({extended: true})); 
+
+
+
+// express-session
+// 세션 관리용 미들웨어
+// 세션 쿠키에 대한 설정 가능
+app.get('/',(req,res,next))
+
+
+
+cookieParser
+요청 헤더의 쿠키를 해석해주는 미들웨어
+req.cookies안에 쿠키가 들어있음.
+app.use(cookieParser('password')) 
+
+// 쿠키 옵션 추가
+res.cookie('name','nice',{
+    expires:new Date(Date.now()+900000),
+    httpOnly:true,
+    secure:true,
+})
+
+// 쿠키 지우기(expries와 maxAge를 제외한 모든 옵션이 일치해야 함)
+res.clearCookie('name','nice',{httpOnly:true,secure:true})
