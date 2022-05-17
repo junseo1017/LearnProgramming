@@ -1,0 +1,125 @@
+// 서버에서 클라이언트로 보낼 html의 형태를 미리 템플릿으로 저장 동작 시에 미리 작성된 템플릿에 데이터를 넣어 완성된 html 생성 템플릿 엔진은 템플릿 작성 문법과 작성된 템플릿을 html로 변환하는 기능을 제공
+
+// express 템플릿 엔진
+// ejs - html과 유사한 문법의 템플릿 엔진
+//pug - 들여쓰기 표현식을 이용한 간략한 표기와 레이아웃 등 강력한 기능을 제공
+
+
+//pug 
+// 들여쓰기 표현식을 사용해 가독성이 좋고 개발 생산성이 높음 html을 잘 모르더라도 문법적 실수를 줄일 수 있음
+// layout,include, mixin등 강력한 기능 제공
+
+// 사용 양식
+// html 닫기 태그없이 들여쓰기로 블럭 구분
+// =을 이용해서 전달받은 변수 사용 가능
+// id,class는 태그 뒤에 이어서 바로 사용 ()을 이용해서 attribute사용
+html
+    head
+        title=title
+    body
+        h1#greeting 안녕하세요
+        a.link(href="/") 홈으로
+
+// each,if
+// each~in 표현식으로 주어진 배열의 값을 순환하며 HTML 태그를 만들 수 있음
+// if문을 통해 주어진 값의 조건을 확인하여 HTML 태그를 만들 수 있음
+each item in arr
+    if item.name == 'new'
+        h1 New Document //  New Document라는 문자열을 넣어주고 있음
+    else 
+        h1= `${item.name}`
+
+
+// layout
+// block을 포함한 템플릿을 선언하면 해당 템플릿을 layout으로 사용할 수 있음
+// layout을 extends하면 block 부분에 작성한 HTML 태그가 포함됨
+// 반복되는 웹사이트의 틀을 작성해두고 extends하며 개발하면 매우 편리한 기능
+---layout.pug---
+html
+    head
+        title=title
+    body
+        block content
+---main.pug---
+extends layout
+block content
+    h1 Main Page
+
+// include
+// 자주 반복되는 구문을 미리 작성해두고 include하여 사용할 수 있음
+// 일반적인 텍스트 파일도 include하여 템플릿에 포함 가능
+---title.pug---
+h1=title
+---main.pug---
+extend layout
+block content
+    include title
+    div.content
+        안녕하세요
+    pre // 
+        incldue article.txt
+
+// mixin
+// 템플릿을 함수처럼 사용할 수 있게 선언할 수 있음
+// include는 값을 지정할 없지만 mixin은 파라미터를 지정하여 값을 넘겨받아 템플릿에 사용할 수 있음
+---listImem.pug---
+mixin listItem(title,name)
+    tr
+        td title 
+        td name
+--- main.pug---
+include listItem
+table
+    tbody
+        listItem('제목','이름')
+
+// express + pug 연동
+// app.set을 이용해 템플릿이 저장되는 디렉토리를 지정하고, 어떤 템플릿 엔진을 사용할지 지정 가능
+// rer.render 함수는 app.set에 지정된 값을 이용해 화면을 그리는 기능을 수행
+
+// render 함수의 첫 번째 인자는 템플릿의 이름, 두번째인자는 템플렛에 전달되는 값
+---app.js---
+app.set('views', //템플릿이 저장되는 디렉토리가 어딘지 지정
+    path.join(__dirname,'views'))
+ 
+app.set('view engin',pug); //퍼그라는 템플릿을 사용할 것이라고 선어
+---request handler--- 
+res.render('main',{title:'Hello Express'}) // 메인이라는 템플릿 파일을 사용할 떄 사용될 데이터
+
+
+//app.locals
+// render 함수에 전달되지 않은 값이나 함수를 사용할 수 있음
+// 템플릿에 전역을 사용될 값을 지정
+app.js---
+app.locals.appName = 'express'
+main.pug---
+h1=appName 
+//- <h1>Express</h1>
+
+
+// async request handler
+// request handler에서 오류를 처리하기 위한 방법
+// promise().catch(next)
+// anync functino try~catch next
+// async의 비동기 처리는 매우 편리하지만 매번 try-catch 구문을 작성하는 것은 귗낳고 실수하기 쉬움
+// request handler를 async function으로 작성하면서 try~catch next를 자동으로 할 수 있도록 구성
+const asyncHandler = (requestHandler) =>{
+    return async (req,res,next)=>{
+        try{
+            await requestHandler(req,res);
+        } catch (err){
+            next(err);
+        }
+    }
+}
+---
+router.get('/',asyncHandler(async(req,res)=>{
+    const posts = await Posts.find({});
+    if(posts.length<1){
+        throw new Error('Not Found');
+    }
+    res.render('posts/list',{posts});
+}))
+// asyncHandler는 requestHandler를 매개변수로 갖는 함수형미들웨어
+// 전달된 requestHandler는 try~catch로 감싸져 asyncHandler 내에서 실행되고, 
+// throw되는 에러는 자동으로 오류처리 미들웨어로 전달되도록 구성

@@ -32,3 +32,23 @@ c(); // c
 
 // 호출스택 : FILO
 // 큐 : FIFO
+
+const x = 'x';
+function c() {
+  const y = 'y';
+  console.log('c');
+  function b() {
+    const z = 'z';
+    console.log('b');
+    c();
+  }
+}
+
+function a() {
+  const x = 'x';
+  console.log('a');
+  b();
+}
+
+a();
+c();

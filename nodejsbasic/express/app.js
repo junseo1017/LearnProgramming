@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const {addAbortSignal} = require('stream');
+const Index = require('./routes/index');
 const app = express();
 
 app.set('port', process.env.PORT || 3000);

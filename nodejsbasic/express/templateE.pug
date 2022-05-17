@@ -1,0 +1,93 @@
+템플릿 엔진
+- HTML의 정적인 단점을 개선
+- 반복문, 조건문, 변수 등을 사용할 수 있음
+- 동적인 페이지 작성 가능
+
+Pug
+- ruby와 비슷해 코드 양이 많이 줄어듦
+- 익스프레스에 app.set으로 퍼그 연결
+
+pug 선언 
+app.set('views', //템플릿이 저장되는 디렉토리가 어딘지 지정
+    path.join(__dirname,'views'))
+app.set('view engin',pug); //퍼그라는 템플릿을 사용할 것이라고 선언
+
+pug 표현식
+#login-button  >> <div id="login-button"></div>
+.post-image >> <div class="post-image"></div>
+span#highlight >> <span id="highlight"></span>
+button(type="submit") 전송 >> <button type="submit">전송</button>
+script. 
+    const message = 'Pug';
+    alert(message);
+===
+<script>
+    const message='Pug' 
+    alert(message);
+</script>
+
+
+pug 변수
+- res.render에서 두 번째 인수 객체에 Pug 변수를 넣음
+router.get('/',function(req,res,next)=>{
+    res.render('index',{title:'Express'});
+});
+
+- res.locals 객체에 넣는 것도 가능(미들웨어간 공유됨)
+    router.get('/',function(req,res,next){
+        res.locals.title='Express';
+        res.render('index');
+    })
+
+- = #{}으로 변수 렌더링 가능(= 뒤에는 자바스크립트 문법 사용 가능)
+h1 = title 
+p Welcome to #{title}
+button(class=title,type='submit') 전송
+input(placeholder=title+'연습')
+
+
+pug 파일 내 변수
+- -뒤에 자바스크립트 사용
+- const node = 'node'
+- const js = 'javascript'
+p #{node}와 #{js} >> <p>node와 javascript</p>
+
+
+pug 반복문
+- for in / each in으로 반복문 사용 가능 (값과 인덱스 가져올 수 있음)
+ul
+    each fruit in ['사과','배','복숭아']
+        li=fruit
+
+
+pug 조건문
+- if else 문 case when 문 사용 가능
+if isLoggedIn 
+    div 로그인 되었습니다 
+else
+    div 로그인이 필요합니다.
+
+case fruit
+    when 'apple'
+        p 사과입니다.
+    when 'banana'
+        p 바나나입니다 
+    default 
+        p 과일이 아닙니다.
+
+
+pug inlcude
+- 퍼그 파일에 다른 퍼그 파일을 넣을 수 있음
+---header.pug
+header
+    a(href='/') Home 
+    a(href='/about') About
+---footer.pug
+footer
+    div 푸터입니다 
+---main.pug
+include header
+main 
+    h1 메인
+    p 문장
+incldue footer

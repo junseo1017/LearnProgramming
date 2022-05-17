@@ -1,0 +1,88 @@
+// nunjucks를 사용하고 싶다면 view engine을 html로 교체
+<!-- 
+  const nunjucks = require('nunjucks'); 
+  nunjucks.cofigure('views', { express: app, watch: true, }); 
+-->
+{{변수}}
+<h1>{{title}}</h1>
+<p>welcome to {{title}}</p>
+<button class="{{title}}" type="submit">전송</button>
+
+// 내부 변수 선언 가능 {%set 자바스크립트 구문} {% set node ='Node.js'%} {% set js ='javascript'%}
+<p>{{node}}와{{js}}</p>
+>>
+<p>Node.js와 javascript</p>
+
+// 이스케이프
+<p>{{'<strong>이스케이프</strong>'}}</p>
+<p>{{'<strong>이스케이프 안함</strong>'|safe}}</p>
+
+// 반복문 // {% %} 내부에 for in 작성 // index는 loop 키워드
+<ul>
+  {% set fruits =['사과','배','오렌지'] %} {% for item in fruits %}
+  <li>{{item}}</li>
+  {% endfor %}
+</ul>
+
+<ul>
+  {% set fruits =['사과','배','오렌지'] %} {% for item in fruits %}
+  <li>{{loop.index}}번째 {{item}}</li>
+  {% endfor %}
+</ul>
+
+// 조건문 // {% if %} {% if isLoggedIn %}
+<div>로그인 되었습니다.</div>
+{% else %}
+<div>로그인이 필요합니다.</div>
+{% endif %} {% if fruit ==='apple' %}
+<div>사과입니다.</div>
+{% elif ==='바나나' %}
+<div>바나나입니다.</div>
+{% else %}
+<p>과일이 아닙니다.</p>
+{% endif %}
+
+<!-- 
+  include
+  다른 파일 불러올 수 있음 
+  include에 파일 경로 넣을 수 있음 ---header.html 
+-->
+<!-- header.html -->
+<header>
+  <a href="/">home</a>
+  <a href="/about">about</a>
+</header>
+<!-- footer.html -->
+<footer>
+  <div>푸터입니다.</div>
+</footer>
+<!-- main.html -->
+{% include "header.html" %}
+<main>
+  <h1>메인</h1>
+  <p>문장</p>
+</main>
+{% include "footer.html" %}
+
+<!-- layout -->
+<!-- layout.html -->
+<html>
+  <header>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="" />
+  </header>
+  <body>
+    <header>{% block content %} {% endblock %}</header>
+    <footer>{% block script %} {% endblock %}</footer>
+  </body>
+</html>
+<!-- body.html -->
+{% extends 'layout.html' %} \
+<!--  -->
+{% block content %}
+<main>
+  <p>내용</p>
+</main>
+{% endblock %} {% block script %}
+<script src="/main.js"></script>
+{% endblock %}
