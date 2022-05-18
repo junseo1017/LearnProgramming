@@ -81,8 +81,7 @@ table
 ---app.js---
 app.set('views', //템플릿이 저장되는 디렉토리가 어딘지 지정
     path.join(__dirname,'views'))
- 
-app.set('view engin',pug); //퍼그라는 템플릿을 사용할 것이라고 선어
+app.set('view engin',pug); //퍼그라는 템플릿을 사용할 것이라고 선언
 ---request handler--- 
 res.render('main',{title:'Hello Express'}) // 메인이라는 템플릿 파일을 사용할 떄 사용될 데이터
 

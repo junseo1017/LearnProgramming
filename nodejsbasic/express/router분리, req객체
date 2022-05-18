@@ -93,5 +93,6 @@ res 객체
 - res.render(뷰, 데이터) : 템플릿 엔진을 렌더링해서 응답할 때 사용
 - res.send(데이터) : 데이터와 함께 응답을 보냄.
 - res.sendFile(경로) : 경로에 위치한 파일을 응답함
-- res.set(헤더, 값) : 응답의 헤더를 설정함.
+- res.set(헤더, 값) 또는 res.setHeader(헤더, 값) : 응답의 헤더를 설정함.
 - res.status(코드) : 응답 시의 HTTP 상태 코드를 지정
+
