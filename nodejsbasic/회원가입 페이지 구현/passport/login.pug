@@ -1,0 +1,12 @@
+form(action="/auth" method="post" onsubmit="return check()")
+    table 
+        tbody
+            tr 
+                td  이메일
+                td: input(type='text' name='email')
+            tr 
+                td  비밀번호
+                td: input(type='password' name='password')
+           tr
+                td(colspan='2')
+                    input(type='submit' value='가입하기')
