@@ -1,0 +1,14 @@
+nginx 
+- 최근 신규 프로젝트에서 가장 많이 채택되고 있는 웹 서버 소프트웨어
+- 웹 서버 소프트웨어? http 요청을 받아 파일이나 실행 결과를 http 응답으로 보내주는 소프트웨어
+
+nginx를 사용하는 이유
+- java tomcat / php-fastcgi 등 다른 언어가 http 요청을 처리를 위한 의존성이 있는 것에 반해, 
+- Node.js는 기본적으로 http 요청을 수신하고 응답하는 기능이 이미 있음 > 웹 서버 소프트웨어 없이도 스스로 동작 가능
+- 하지만 https, 도메인 연결, static file caching 등의 기능을 사용하기 위해 nginx 같은 웹 서버 소프트웨어는 필수
+> nodejs 단독으로 production-level 서비스를 구축할 수는 없음
+
+nginx + node.js
+- nginx의 reverse-proxy라는 기능을 사용해 node.js와 ngnix를 연결할 수 있음
+- reverse-proxy는 http 요청을 다른 서버에 전달하는 기능 
+- nginx가 http 요청을 받아, 설정된 내용에 해당하는 요청만 node.js로 전달

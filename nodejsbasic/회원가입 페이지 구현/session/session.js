@@ -27,7 +27,7 @@
 // 세션데이터를 몽고디비에 저장하고 관리하는 기능을 자동으로 수행해 줌
 const MongoStore = require('connect-mongo');
 app.use(
-  session({
+  session({ 
     secret: 'SeCrEt',
     resave: false,
     saveUninitialized: true,
