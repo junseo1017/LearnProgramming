@@ -1,7 +1,5 @@
 function solution(a, b) {
-    a.reduce((acc,cur,i)=>{acc+(cur*b[i])},0)
-    retur
+    return a.reduce((acc,cur,i)=>{return acc+(cur*b[i])},0)
 }   
 
 
-[1,2,3,4]	[-3,-1,0,2]	3

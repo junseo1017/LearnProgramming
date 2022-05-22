@@ -22,4 +22,3 @@ function solution(nums) {
   console.log(count);
 }
 
-solution([1, 2, 7, 6, 4]);
