@@ -11,8 +11,6 @@ function solution(sizes) {
     }
   }
   return row * column;
-
-  //   return answer;
 }
 solution([
   [60, 50],
