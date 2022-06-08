@@ -1,11 +1,8 @@
 function solution(arr, divisor) {
   let answer = [];
-  const filter = arr.filter(e => e % divisor === 0 ? true)
-
-  if (filter.length == 0) {
-    answer.push(-1);
-    return answer;
-  } else return filter.sort((a, b) => a - b);
+  answer = arr.filter(e => e % divisor === 0)
+  answer.length === 0 ? answer.push(-1) : answer.sort((a, b) => a - b);
+  return answer
 }
 
 function solution(a, b) {

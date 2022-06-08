@@ -33,7 +33,6 @@ function solution(dartResult) {
       return Number(e[0]) ** 3;
     }
   });
-  console.log(parse);
   let answer = [];
   parse.forEach((e, i) => {
     if (typeof e === 'number') {
