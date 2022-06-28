@@ -1,0 +1,52 @@
+Sass (Syntactically Awesome Style Sheets)
+- CSS Preprocessor(css 전처리기) | 코드를 한번 컴파일 한다는 의미 
+- SCSS,Sass 문법을 지원함
+- 모듈, 믹스인, nested style, 변수, 조건문, 반복문 등의 기능으로 css를 프로그래밍 언어적으로 활용하도록 확장
+- styled-components는 sass를 기본적으로 지원
+    
+    // &는 자기 자신을 나타내는 placeholder
+// 기존 css의 selector 문법을 응용하여 복잡한 스타일을 적용
+.reset-button{
+    &.active{} // .reset-button.acitve {} 와 괕은 의미
+    &.disabled{}
+    &:hover{}
+    &:not(:first-of-type) {}
+    &+&{} // .reset-button + .reset-button {}
+    &~&{}
+    & > button{}
+}
+
+// Sass variable
+// Mixin,partial과 함께 Sass가 제공하는 코드 관리 방법
+// 색상, 사이즈 등 자주 등장하는 값을 주로 변수로 사용함.
+
+// Sass nested style
+// 별도의 class를 정의할 필요없이, 하나의 block 안에 여러 css를 적용할 수 있는 방법.
+// css specificity가 그대로 적용되므로, 너무 깊게 nested되면 스타일 유지보수가 힘듦    
+    
+$color-red:red;
+$color-white:#fff;
+.reset-button{
+    color:$color-red;
+    &:hover{
+        color:$color-white;
+    }
+    > button {}
+}
+    
+//Sass mixins, import, include < mixin을 활용하기 위한 개념
+// mixin 여러가지 스타일을 한번에 뭉친 스타일을 정의하고 싶을 때 사용
+@mixins font-style-1{
+    font-size: 36pt;
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: -0.05;
+}
+
+//import + include
+@import './font-styles.scss'
+
+.button{
+    @include font-style-1;
+    background:red;
+}

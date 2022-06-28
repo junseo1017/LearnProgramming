@@ -1,0 +1,54 @@
+CSS layout의 기본이 되는 모델
+- content-box, padding-box, border-box,margin-box 순으로 하나의 element를 감싸고 있음
+- inline, block 두가지의 box type을 가지고 있음
+- display : inline, inline-block,block으로 서로 다른 box type을 적용할 수 있음.
+
+box-sizing
+- width,height는 디폴트로 content-box의 크기를 정의
+- width:100px로 정의시 content의 크기만 100px이 되며, padding,border의 크기는 100px에 추가됨
+- box-sizing: border-box로 box sizing의 방식을 변경할 수 있음
+- border-box는 padding, border를 width,height에 포함
+- 보통 이해하기 쉬운 레이아웃을 정의하기 위해 box-sizing:border-box(width,height가 콘텐츠 박스가 아닌 border-box를 기준으로 변경됨) 를 선호
+
+css position
+static - posititon의 defalut. element는 normal flow를 따라 위치함
+relative - normal flow를 따라 위치하되, 자기 자신에 상대적으로 위치함(top,bottom,left,right를 통해 자기자신을 기준으로 이동 가능)
+absolute - normal flow에서 벗어나서 가장 가까운 ancestor(containing block : element를 감싸는 block / containing block은 static을 제외한 다른 position)에 상대적으로 위치함
+fixed - normal flow를 벗어나 viewport(지금 바라보는 화면)에 상대적으로 위치함
+sticky - normal flow에 따라 위치하되, 가장 가꾸은 scrolling ancestor에 상대적으로 위치함
+
+css units
+절대적인 길이 : px, pt, cm, in
+특정 값에 상대적인 길이 : rem, em(부모의 font-size에 비례해서 결정되는 상대 단위), %
+viewport에 상대적인 길이 : vw, vh, vmin, vmax
+
+CSS Flexbox
+- HTML element를 하나의 상자로 간주. item을 배열 스타일함.
+- 1차원 레이아웃을 디자인하는데 사용
+- responisve design에 유리
+- 가운데 정렬, 비율로 정렬 등을 처리할 때 유리
+
+flex container - flexbox 아이템을 담는 컨테이너
+flex  axis - flex 아이템의 방향을 결정하는 축 (<-> cross axis)
+
+flex-direction = row,column 등의 방향 결정
+justify-content = main axis에서의 정렬 결정
+align-items = cross axis에서의 정렬 결정
+flex-wrap = flex container가 내부 item의 width를 합친 것보다 작아질 때, 어떻게 정렬할 것인지를 결정
+
+flex-grow = flex container가 커질 떄 item이 얼마만큼 늘어날 것인지를 결정
+flex-shrink = flex container가 줄어들 때 item이 얼마만큼 줄어들 것인지를 결정
+flex-basis = 기준점이 되는 item의 크기
+justify-self = 한 아이템을 main-axis에 따라 어떻게 정렬할 것인지를 결정
+align-self = 한 아이템을 cross-axis에 따라 어떻게 정렬할 것인지를 결정
+order = flex container에서 item의 순서를 결정
+
+
+flex : 0(flex-grow) 0(flex-shrink) 120px(flex-basis);
+
+
+Sass (Syntactically Awesome Style Sheets)
+- CSS Preprocessor(css 전처리기) | 코드를 한번 컴파일 한다는 의미 
+- SCSS,Sass 문법을 지원함
+- 모듈, 믹스인, nested style, 변수, 조건문, 반복문 등의 기능으로 css를 프로그래밍 언어적으로 활용하도록 확장
+- styled-components는 sass를 기본적으로 지원
