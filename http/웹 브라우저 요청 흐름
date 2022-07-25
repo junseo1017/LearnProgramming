@@ -1,0 +1,11 @@
+웹 브라우저에 https://www.google.com/search?q=hello&hl=ko이란 요청을 보냈을 때
+
+1. 웹 브라우저는 DNS를 조회하고, HTTP 요청 메시지 생성
+  - GET /search?q=hello&hl=ko HTTP/1.1
+    Host : www.google.com
+2. socket 라이브러리를 통해 전달 
+  - TCP/IP 연결(IP,PORT) / 3 way handshake이 여기서 일어남
+  - 데이터 전달
+3. TCP/IP 패킷 생성, HTTP 메세지 포함 후 구글 서버로 전송
+4. 구글은 HTTP 메세지를 받고 해석한 뒤 HTTP 응답 메세지 만들고 패킷을 씌워서 반환
+5. 웹 브라우저가 HTML을 렌더링함.
