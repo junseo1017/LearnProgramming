@@ -1,0 +1,52 @@
+1. http api - 컬렉션
+- post 기반 등록
+2.http api - 스토어
+- put 기반 등록
+3. html form 사용
+
+
+1.POST 신규 자원 등록 특징
+- 클라이언트는 등록될 리소스의 uri를 모른다.
+  - 회원 등록 /members -> POST
+  - POST /members
+- 서버가 새로 등록된 리소스 URI를 생성해준다.
+  - HTTP/1.1 201 Created Location:/members/100
+- 컬렉션
+  - 서버가 관리하는 리소스 디렉토리
+  - 서버가 리소스의 uri를 생성하고 관리
+
+2. PUT 기반 등록
+- 클라이언트가 리소스 uri를 알고 있어야 한다.
+   - 파일 등록 /files/{filename} -> PUT
+   - PUT /files/star.jpg
+- 클라이언트가 직접 리소스의 URI를 지정한다.
+- 스토어
+  - 클라이언트가 관리하는 리소스 저장소
+  - 클라이언트가 리소스의 URI를 알고 관리
+
+3. html form 사용
+- html form은 get,post만 지원
+  - get,post만 지원하므로 제약이 있음.
+- ajax 같은 기술을 사용해서 해결 가능
+- 컨트롤 URI
+  - get,post만 지원하므로 제약이 있음.
+  - 이런 제약을 해결하기 위해 동사로 된 리소스 경로 사용
+  - /new, /edit, /delete 등
+  - http 메서드로 해결하기 애매한 경우 사용
+
+
+URI설계 개념
+- 문서(document)
+  - 단일 개념(파일 하나, 객체 인스턴스, 데이터베이스 row)
+  - /members/100, /files/star.jpg
+- 컬렉션
+  - 서버가 관리하는 리소스 디렉토리
+  - 서버가 리소스의 URI를 생성하고 관리
+  - /members
+- 스토어
+  - 클라이언트가 관리하는 자원 저장소
+  - 클라이언트가 리소스의 URI를 알고 관리
+- 컨트롤러(controller), 컨트롤 URI
+  - 문서, 컬렉션, 스토어로 해결하기 어려운 추가 프로세스 실행
+  - 동사를 직접 사용
+  - /members/{id}/delete
