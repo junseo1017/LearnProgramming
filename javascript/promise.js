@@ -52,14 +52,5 @@ testFunction(
   }
 );
 
-<<<<<<< HEAD:javascript/promise,await,async.js
-Promise.all;
-Promise.race;
-
-
-
-// 
-=======
 Promise.all; // 프로미스를 모두 실행시키고 제일 마지막으로 실행된 것에서 실행
 Promise.race; // 제일 빨리 실행된 것부터 실행
->>>>>>> refs/remotes/origin/main:javascript/promise.js

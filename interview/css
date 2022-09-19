@@ -1,0 +1,10 @@
+margin, padding의 차이
+ margin은 외부여백이구요. padding은 내부여백입니다. 가장 큰 차이점은 컨텐츠 영역에 포함되는지 아닌지입니다. 예를 들어 컨텐츠 영역에 background-color속성을 주었을 때 padding은 속성의 영향을 받고 margin은 영향을 받지 않게 됩니다. 
+
+
+position의 사용법
+    포지션은 크게 4가지로 나뉩니다. static, relative, absolute, fixed,(sticky,inherit)입니다.
+    static은 포지션의 default이구요. 다른 태그와의 관계의 의해 자동으로 정해집니다.
+    relative는 원래 있는 위치 자기 자신을 기준으로 좌표를 지정할 수 있습니다. 
+    absolute는 절대 좌표로 위치 지정이 가능하고, 속성이 static이 아닌 다른 position을 가진 부모 태그에 상대적으로 위치하게 됩니다. 없을 경우 body 태그를 기준으로 위치하게 됩니다.
+    fixed는 viewport에 상대적으로 위치하게 됩니다. 

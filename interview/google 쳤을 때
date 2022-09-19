@@ -1,0 +1,16 @@
+1. google.com 브라우저에 입력
+2. DNS 기록에서 입력한 도메인과 대응되는 IP 주소가 있는 지 확인함
+- IP 네트워크 통신을 하기 위해 부여되는 고유한 주소이자. 규칙.
+- 브라우저 DNS 캐시 조회
+- OS DNS 캐시 조회
+- Router DNS Server 직접 조회
+- ISP(인터넷 제공자) 캐시 순으로 확인하게 됨. (ISP는 DNS Server를 가지고 있음.)
+3. ISP의 DNS Server(DNS Recursor)에서는 재귀적으로 도메인 이름을 찾게 됨.
+- root domain부터 top-level > second-level - third-level domain으로 탐색 
+4. 일치되는 IP를 찾으면 해당 서버와 TCP 연결 진행.
+- TCP:IP의 한계점을 보완한 전송 제어 프로토콜 (3ways handshake를 통해 패킷 소실 막아주고, 순서대로 IP가 전달되게 함.)
+- TCP 세그먼트에 IP 패킷을 담아서 서버에 전달
+5. 연결이 완료되면 브라우저는 웹 서버에 HTTP 요청을 함.
+6. 웹 서버는 요청을 읽고 HTTP Response 생성하여 브라우저에 전송
+- response는 json,xml,html 등 다양한 포맷이 있음.
+7. 브라우저는 http response를 렌더링함.

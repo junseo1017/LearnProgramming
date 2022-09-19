@@ -153,3 +153,18 @@ Quality Values
     예시) domain=example.org
         - 명시 : 명시한 문서 기준 도메인+서브 도메인 포함
         - 생략 : 현재 문서 기준 도메인만 적용
+
+    쿠키 - 경로 (path)
+    예시 path=/home
+        - 이 경로를 포함한 하위 경로 페이지만 쿠키 접근
+        - 일반적으로 path=/ 루트로 지정
+    
+    쿠키 - 보안 (Secure, HttpOnly,SameSite)
+        - Secure를 적용하면 https인 경우에만 전송
+        - HttpOnly
+            - XSS 공격 방지
+            - 자바스크립트에서 접근 불가
+            - HTTP 전송에만 사용
+        - SameSite
+            - XSRF 공격 방지
+            - 요청 도메인과 쿠키에 설정된 도메인이 같은 경우만 쿠키 전송

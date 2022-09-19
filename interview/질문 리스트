@@ -1,0 +1,15 @@
+javascript / html / css
+1. google.com을 쳤을 때 동작 ( 네트워크부터 렌더링까지)
+2. 호이스팅. 호이스팅의 문제점. 호이스팅의 해결방법
+3. let과 const와 var의 차이점은 무엇인가?
+4. 클로저. 원리. 스코프. 클로저 사용 이유
+5. margin과 padding의 차이
+6. position의 사용법
+7. get과 post의 차이
+8. this 무엇?  용법 아는대로 말하기.
+9. 브라우저저장소 차이점(local,session,cookie)
+10. Rest? RESTful API?
+11. 프로미스가 뭔가요? 왜 사용하는지? 
+12. 이벤트 루프가 무엇인가요? 매크로 큐 마이크로큐에 대해 말해라.
+13. 
+SPA
