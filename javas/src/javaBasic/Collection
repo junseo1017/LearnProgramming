@@ -1,0 +1,24 @@
+Collection Class
+- 컬렉션 == 컨테이너
+'단일 구조 안에서 다수의 데이터를 그룹화하는 객체' 
+
+컬렉션 프레임워크
+- 다수의 데이터를 다루기 위한 통합 구조
+ 
+ 
+ Vector class
+ - 기존 배열의 단점을 보완
+ - 유동적인 데이터 저장
+ - 배열 + 메서드
+ - 긱본형은 wrapper 클래스로 변환하여 저장
+ Vector VectorTest = new Vector();
+ VectorTest.addElement(new Integer(3));
+  // Vector<String> VectorTest = new Vector
+ // VectorTest.add("a");
+ 
+ ArrayList class
+ - Vector의 업그레이드 된 클래스
+ - 기본형은 그대로 사용 가능하지만 제네릭스 사용
+ArrayList List1 = new ArrayList();
+List1.add(1);
+// Collections.sort(List1); // Collection 클래스의 static 메서드인 sort를 활용
