@@ -1,0 +1,82 @@
+AWT 
+ - 자바 초기 GUI 프로그래밍 도구
+ - 운영체제의 리소스 사용
+ 
+SWING (AWT를 기반으로 함)
+ - 순수 자바 컴포넌트 패키지
+ - 자체 리소스 사용, Jxxxx 클래스로 제공
+ 
+컨테이너
+ - 컴포넌트를 포함하는 클래스
+ - AWT : Frame, Panel, Dialog, Window, Applet...
+ - SWING : JFrame, JPanel, JWindow...
+ 
+컴포넌트
+ - 버튼, 이미지, 리스트 등
+ - 컴포넌트는 컨테이너에 포함되어야 함.
+  import java.awt.*;
+  import javax.swing.*;
+ 
+ ---
+ 
+ 레이아웃 관리자
+ - 컨테이너에 컴포넌트를 위치 시키는 방법
+ - 기본 레이아웃 관리자 : setLayout() 메소드 // null을 매개변수로 넣어주면 임의로 세팅이 가능하다.
+ 
+ BorderLayout 관리자
+ - 컨테이너를 5개의 영역으로 분할하여 컴포넌트를 배치
+ setLayout(new BorderLayout());
+ add(new Button("North")),
+ BorderLayout.NORTH;
+ 
+ 컴포넌트의 수직과 수평 간격 설정
+ BorderLayout(int hgap,int vgap)
+ void setHgap(int hgap)
+ void setVgap(int vgap)
+ 
+ GridLayout 관리자
+ - 컨테이너 공간을 격자 모양으로 나누는 관리자
+ 
+ FlowLayout 관리자
+ - 왼쪽에서부터 오른쪽으로 순차적으로 컴포넌트를 위치시킴
+ 
+ CardLayout 관리자
+ - 컴포넌트가 겹쳐서 나열되는 레이아웃 관리자
+ 
+ ---
+ 1. 프레임 생성
+ JFrame = Frame + 메뉴 + 컨텐트 팬(컨테이너 클래스)
+ 1-1) 보통은 JFrame을 상속시켜서 생성자로 기본 뼈대를 호출함.
+ public class FrameJ extends JFrame {
+	FrameJ () {
+		setTitle("swing test");
+		setSize(200,200);
+		setVisible(true);
+	}
+}
+
+2. 컴포넌트 연결
+
+3.프로그램 종료
+- 자바 프로그램 종료 : System.exit(0);
+- 스윙 프로그램 종료 : setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+
+4. 이벤트 처리
+이벤트 처리 -> 리스너 -> 인터페이스(이벤트 처리를 위한 메소드 정의)
+
+이벤트 소스 : 이벤트를 발생시킨 컴포넌트 (JButton, JList 등)
+
+이벤트 객체 
+> 이벤트 소스에 대한 모든 정보를 가지는 객체 
+> 이벤트 종류, 소스, 좌표 등 
+> ActionEvent, ItemEvent 등 // getSource() 메서드를 통해 추출 가능
+
+이벤트 리스너 
+> 이벤트에 따라 호출될 메소드 인터페이스 (ActionListener, ItemListener 등)
+> 이벤트 리스너 사용 방법 : 인터페이스 상속하여 클래스 사용, 익명 클래스로 구현
+
+이벤트 어댑터
+> 리스너가 인터페이스이기 때문에 구현하려는 이벤트 리스너에 대해 모든 메서드를 작성해야 함.
+> 리스너 메서드가 미리 구현된 클래스 -> 어댑터 클래스
+> 전체 메소드의 일부 구현, 메소드가 많은 경우에만 어댑터 클래스 제공
+
